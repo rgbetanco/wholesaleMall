@@ -1,0 +1,45 @@
+<?php
+$this->form->setAction($this->baseUrl().'/combodetail/index');
+echo $this->form;
+?>
+<script>
+    $(document).ready(function(){
+        val = $('#cdetail').val();
+        $.post('<?php echo $this->baseUrl()?>/combos/index',{'id':val},function(response){
+                $('#tbl > tbody:last').html(response);
+            });
+    });
+    function showDetail(val){
+        if(val.value !== ""){
+            $.post('<?php echo $this->baseUrl()?>/combos/index',{'id':val.value},function(response){
+                $('#tbl > tbody:last').html(response);
+            });
+        }
+    }
+</script>
+<div class="panel panel-primary">
+<div class="panel-heading">Products in Combo</div>
+<div class="panel-body">
+<form action="<?php echo $this->baseUrl()?>/combodetail/delete" method="post">
+    <div class="container-fluid">
+        <table class="table table-hover" id="tbl">
+            <thead>
+                <tr>
+                    <td><strong>Products Added</strong></td>
+                    <td><center>Delete</center></td>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="30"><input type="submit" class="btn btn-primary" value="Submit"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</form>
+<div id="error"></div>
+</div>
+</div>

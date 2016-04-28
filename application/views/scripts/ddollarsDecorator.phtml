@@ -1,0 +1,25 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">Add Dogo Dollars Form</div>
+    <div class="panel-body">
+        <form enctype="application/x-www-form-urlencoded" role="form" class="form-horizontal" action="<?php echo $this->element->getAction(); ?>" method="post" >
+            <table style="clear:both" border="0" cellpadding="5" padding="10" width='100%'>
+                <tr>
+                    <td>Order #</td>
+                    <td><?php echo $this->element->getElement('order'); ?></td>
+                </tr>
+                <tr>
+                    <td>Amount US$</td>
+                    <td><?php echo $this->element->getElement('amount'); ?></td>
+                </tr>
+                <tr>
+                    <td>Expires</td>
+                    <td><?php echo $this->element->getElement('expires'); ?></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><?php echo $this->element->getElement('submit'); ?><?php echo $this->element->getElement('reset'); ?></td>
+                </tr>
+            </table>
+            <?php echo $this->element->getElement('csrf'); ?>
+        </form>
+    </div>
+</div>

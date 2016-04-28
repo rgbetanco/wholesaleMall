@@ -1,0 +1,10 @@
+<?php
+
+$this->layout()->setLayout('second_layout');    
+
+$this->form->setAction(Zend_Controller_Front::getInstance()->getBaseUrl().'/ddollars/edit/id/'.$this->id.'/reg_id/'.$this->reg_id);
+echo $this->errorMessage;
+?>
+<div class="content_inside width_25">  
+    <?php echo $this->form;?>
+</div>

@@ -1,0 +1,10 @@
+<?php
+
+$this->layout()->setLayout('second_layout');    
+
+$this->form_ship->setAction(Zend_Controller_Front::getInstance()->getBaseUrl().'/shipping/edit/reg_id/'.$this->ship_id.'/id/'.$this->id);
+echo $this->errorMessage;
+?>
+<div class="content_inside width_50">
+<?php echo $this->form_ship; ?>
+</div>

@@ -1,0 +1,83 @@
+<?php
+$this->layout()->setLayout('second_layout');
+?>
+<div class="col-md-4">
+<div class="panel panel-primary">
+    <div class="panel-heading">Search & Filters</div>
+    <div class="panel-body">
+<div style="position:relative; float:left;">
+    <form action=<?php echo $this->baseUrl() . "/register/list"; ?> method="post" class="form-horizontal" role="form">
+        <table>
+            <tr>
+                <td width="70%"><?php echo $this->formText('search', '', array('size' => 10, 'class' => 'form-control')); ?></td>
+                <td><?php echo $this->formSubmit('Submit', 'search', array('size' => 5, 'class' => 'btn btn-default')); ?></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div style="position:relative; float: left; width: 100%; margin-top: 20px; margin-bottom: 20px">
+    <ul style="list-style-type:none; margin: 0; padding: 0">
+        <li style="display:inline"><a class="btn btn-primary" href=<?php echo $this->baseUrl() . "/register/list/search/active"; ?> >Active</a></li>
+        <li style="display:inline"><a class="btn btn-primary" href=<?php echo $this->baseUrl() . "/register/list/search/disabled"; ?>>Disabled</a></li>
+        <li style="display:inline"><a class="btn btn-primary" href=<?php echo $this->baseUrl() . "/register/list/"; ?>>All</a></li>
+    </ul>
+</div>
+        </div>
+</div>
+</div>
+<div class="col-md-4"><a href="<?php echo $this->baseUrl() ?>/register/adminadd" class="btn btn-warning">Add New Customer</a></div>
+<div class="col-md-12">
+<div class="panel panel-primary" >
+    <div class="panel-heading">Customer List</div>
+    <div class="panel-body">
+<form action=<?php echo $this->baseUrl() . "/register/updatemin" ?> method="post" onsubmit="return confirm('Are you sure you want to submit this form?');">
+    <table class="table table-hover" width="100%" cellpadding="2px" style="width: 95%">
+        <?php
+        if (sizeof($this->customers) > 0) {
+            ?>
+            <thead
+                <tr>
+                    <th><a href="<?php echo $this->url(array('controller' => 'register', 'action' => 'list', 'sort' => 'company')); ?>">Company</a></th>
+                    <th><a href="<?php echo $this->url(array('controller' => 'register', 'action' => 'list', 'sort' => 'last_name')); ?>">Name</a></th>
+                    <th><a href="<?php echo $this->url(array('controller' => 'register', 'action' => 'list', 'sort' => 'email')); ?>">Email</a></th>
+                    <th>Status</th>
+                    <th><center>Delete</center></th>
+                    <th><center>More</center></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="9"><center><?php echo $this->paginationControl($this->customers, 'Elastic', 'pagecontrol.phtml'); ?></center></td>
+            </tr>
+            </tfoot>
+            <tbody>
+            <?php } ?>
+            <?php
+            if (sizeof($this->customers) > 0) {
+                foreach ($this->customers as $customer) {
+                    ?>
+                    <tr>
+                        <?php echo $this->formText('id[]', $customer->id, array('size' => 3, 'readonly' => true, 'hidden' => true)); ?>
+                        <td><?php echo $this->formText('company[]', $customer->company, array('size' => 17, 'class' => 'form-control')); ?></td>
+                        <td><?php echo $this->formText('name[]', $customer->first_name . " " . $customer->last_name, array('size' => 20, 'readonly' => true, 'class' => 'form-control')); ?></td>
+                        <td><?php echo $this->formText('email[]', $customer->email, array('size' => 30, 'class' => 'form-control')); ?></td>
+                        <td><?php echo $this->formSelect('status[]', $customer->status, array('size' => 1, 'multiple' => false, 'class' => 'form-control'), array('active' => 'Active', 'disabled' => 'Disabled')); ?></td>
+                        <td align="center"><?php echo $this->formCheckbox('delete[]', $customer->id, array('checked' => FALSE)); ?></td>
+                        <td align="center"><a href="<?php echo $this->url(array('controller' => 'register', 'action' => 'detail', 'reg_id' => $customer->id)); ?>">Details</a></td>
+                    </tr>
+                    <?php
+                }
+            } else {
+                echo "No record found on the current database, please try another keyword";
+            }
+            ?>
+            <tr>
+                <td colspan="9"><?php echo $this->formSubmit('submit', 'Submit', array('class' => 'btn btn-primary', 'onClick' => 'init1()')) ?></td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="hidden" name="page" value="<?php echo $this->page ?>" />
+</form>
+</div>
+</div>
+</div>

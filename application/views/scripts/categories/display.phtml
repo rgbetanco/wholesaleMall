@@ -1,0 +1,83 @@
+<?php
+$this->layout()->setLayout('second_layout');
+if (!$this->tab) {
+    $default = "class='active'";
+    $active = "active";
+} else {
+    $default = "";
+    $active = "";
+}
+?>
+
+<style>
+    .tab-pane{
+        position:relative;
+        float:left;
+        width:50%;
+        height:auto; 
+        margin:0 auto; 
+    }
+    form {
+        position:relative;
+        float:left;
+        width: 75%;
+        height:auto; 
+    }
+    .nav-tabs > li, .nav-pills > li {
+        float:none;
+        display:inline-block;
+        *display:inline; /* ie7 fix */
+        zoom:1; /* hasLayout ie7 trigger */
+    }
+
+    .nav-tabs, .nav-pills {
+       /* text-align:center; */
+    }
+    
+</style>
+
+<div class="tabbable" > <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs" id="myTab">
+        <li <?php
+        if ($this->tab == 'category') {
+            echo "class='active'";
+        } else {
+            echo $default;
+        }
+        ?>><a href="#category" data-toggle="tab">Add New Category Form</a></li>
+        <!-- <li <?php
+        //if ($this->tab == 'categorylist') {
+        //    echo "class='active'";
+        //}
+        ?>><a href="#categorylist" data-toggle="tab">Update Category Form</a></li> -->
+        <li <?php if ($this->tab == 'subcategory') {echo "class='active'";}?>><a href="#subcategory" data-toggle="tab">Add New Sub-Category Form</a></li>
+        <!-- <li <?php// if ($this->tab == 'subcategorylist') {echo "class='active'";}?>><a href="#subcategorylist" data-toggle="tab">Update Sub-Category Form</a></li> -->
+    </ul>
+    <br>
+    <div class="tab-content">
+
+        <!--Add categories -->
+        <div class="tab-pane <?php if ($this->tab == 'category') {echo 'active';} else {echo $active;}?>" id="category">
+            <?php echo $this->action('form', 'categories', null, array()); ?>
+            <?php echo $this->action('listtoupdate', 'categories', null, array()); ?>
+
+        </div>
+
+        <!--List categories -->
+        <!-- <div class="tab-pane <?php// if ($this->tab == 'categorylist') {echo 'active';} ?>" id="categorylist">
+            <?php// echo $this->action('listtoupdate', 'categories', null, array()); ?>
+        </div> -->
+
+        <!--Add subcategories -->
+        <div class="tab-pane <?php if ($this->tab == 'subcategory') {echo 'active';}?>" id="subcategory">
+            <?php echo $this->action('form', 'subcategories', null, array()); ?>
+            <?php echo $this->action('displaylist', 'categories', null, array()); ?>
+        </div>
+
+        <!--List subcategories -->
+        <!-- <div class="tab-pane <?php// if ($this->tab == 'subcategorylist') {echo 'active';}?>" id="subcategorylist">
+            <?php //echo $this->action('displaylist', 'categories', null, array()); ?>
+        </div> -->
+
+    </div>
+</div>

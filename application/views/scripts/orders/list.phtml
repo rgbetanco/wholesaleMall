@@ -1,0 +1,179 @@
+<?php $this->layout()->setLayout('second_layout'); 
+$day ="";
+?>
+<script>
+    $(document).ready(function(){
+        $('#init_date').datepicker({ dateFormat: "mm/dd/yy" });
+        $('#end_date').datepicker({ dateFormat: "mm/dd/yy" });
+    });
+</script>
+<div class="panel panel-primary" style="position: relative; float: left;">
+    <div class="panel-heading">General Filters</div>
+    <div class="panel-body">
+        <form method="post" action="<?php echo $this->baseUrl() ?>/orders/list">
+            <table>
+                <tr>
+                    <td><input type="text" name="search" class="form-control" /></td>
+                    <td><input type="submit" value="search" class="btn btn-default" /></td>
+                </tr>
+            </table>
+        </form>
+        <br>
+        <ul style="list-style-type:none; margin: 0; padding: 0">
+            <li style="display:inline"><a class="btn btn-primary" href="<?php echo $this->baseUrl() ?>/orders/list/notshipped/1">Not Shipped</a></li>
+            <li style="display:inline"><a class="btn btn-primary" href="<?php echo $this->baseUrl() ?>/orders/list/new/1">New</a></li>
+            <li style="display:inline"><a class="btn btn-primary" href="<?php echo $this->baseUrl() ?>/orders/list/confirmed/1">Confirmed</a></li><br><br>
+            <li style="display:inline"><a class="btn btn-primary" href="<?php echo $this->baseUrl() ?>/orders/list/shipped/1">Shipped</a></li>
+            <li style="display:inline"><a class="btn btn-primary" href="<?php echo $this->baseUrl() ?>/orders/list/cancelled/1">Cancelled</a></li>
+            <li style="display:inline"><a class="btn btn-primary" href="<?php echo $this->baseUrl() ?>/orders/list/date/1">All</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="panel panel-primary" style="position:relative; float: left; margin-left:10px">
+    <div class="panel-heading">Date Filters</div>
+    <div class="panel-body">
+        <form method="post" action="<?php echo $this->baseUrl() ?>/orders/list">
+            <table>
+                <tr>
+                    <td>Initial Date:</td>
+                    <td><input class="form-control" type="text" name="init_date" value="<?php echo $this->init_date; ?>" id="init_date" ></td>
+                </tr>
+                <tr>
+                    <td>Final Date:</td>
+                    <td><input class="form-control" type="text" name="end_date" value="<?php echo $this->end_date; ?>" id="end_date" ></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" class="btn btn-primary" value="Submit"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-primary" style="position:relative; float: left; left:10px;">
+    <div class="panel-heading">Time Filter</div>
+    <div class="panel-body">
+        <form method="post" action="<?php echo $this->baseUrl() ?>/orders/list" >
+        <table>
+            <tr>
+                <td>Group By:</td>
+                <td>
+                    <select name="timefilter" class="form-control">
+                        <option value="none">Choose</option>
+                        <option value="day" <?php if ($this->timefilter == 'day'){echo 'selected=selected';} ?>>Day</option>
+                        <option value="month" <?php if ($this->timefilter == 'month'){echo 'selected=selected';} ?>>Month</option>
+                        <option value="year" <?php if ($this->timefilter == 'year'){echo 'selected=selected';} ?> >Year</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Group Type:</td>
+                <td>
+                    <select name="ordertype" class="form-control">
+                        <option value="asc" <?php if ($this->order == 'asc'){echo 'selected=selected';} ?> >Ascending</option>
+                        <option value="desc" <?php if ($this->order == 'desc'){echo 'selected=selected';} ?> >Descending</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><input class="btn btn-primary" type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+        </form>
+    </div>
+</div>
+
+<br>
+<div class="panel panel-primary" style="position:relative; float: left; width: 100%">
+    <div class="panel-heading">Order List</div>
+    <div class="panel-body">
+<form method="post" action="<?php echo $this->baseUrl() ?>/orders/edit" onsubmit="return confirm('Are you sure you want to submit this form?')" >
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td><strong><a href="<?php echo $this->baseUrl() . $this->urlreturned . 'order_number/1'; ?>">Order Id</a></strong></td>
+                <td width="20%"><strong><a href="<?php echo $this->baseUrl() . $this->urlreturned . 'email/1'; ?>">E-Mail</a></strong></td>
+                <td><center><strong><a href="<?php echo $this->baseUrl() . $this->urlreturned . 'date/1'; ?>">Date</a></strong></center></td>
+                <td width="11%"><center><strong>Status</strong></center></td>
+                <td><center><strong><a href="<?php echo $this->baseUrl() . $this->urlreturned . 'amount/1'; ?>">Amount</a></strong></center></td>
+                <!-- <td width="8%"><center><strong>Taxes</strong></center></td> -->
+                <td width="8%"><center><strong>Shipping</strong></center></td>
+                <td><center><strong>Tracking</strong></center></td>
+                <td><center><strong>DDollars</strong></center></td>
+                <td><center><strong>Detail</strong></center></td>
+                <td><center><strong>Delete</strong></center></td>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="99"><input type="submit" value="Submit" class="btn btn-primary"></td>
+            </tr>
+            <tr>
+                <td colspan="99"><center><?php echo $this->paginationControl($this->data, 'Elastic', 'pagecontrol.phtml'); ?></center></td>
+        </tr>
+        </tfoot>
+        <tbody>
+
+            <?php foreach ($this->data as $k => $d) { ?>
+            <?php $x = substr($d->created, 0, $this->strlength); if($day != $x){$day = $x; ?>
+            <!-- <tr> -->
+                <!-- <td colspan="11"><center><h3><?php// echo $x; ?></h3></center></td> -->
+            <!-- </tr> -->
+            <?php }?>
+                <tr>
+                    <td>
+                        <?php if(strpos($d->tracking_numbers, ",")) { 
+                            $track = substr($d->tracking_numbers, 0, strpos($d->tracking_numbers, ","));
+                        } else {
+                            $track = $d->tracking_numbers;
+                        }?>
+
+                        <a href="<?php echo $this->action('getshippingurl','orders', null, array('id'=>$d->s_method));echo $track; ?>"><?php echo $d->order_number;?></a>
+                    </td>
+                    <td><?php echo $d->email; ?></td>
+                    <?php $date = new DateTime($d->created) ?>
+                    <td align="center"><?php echo date_format($date, 'm/d/Y'); ?></td>
+                    <td align="center">
+                        <select name="status[]">
+                            <option value="0" <?php if($d->status == 0){echo "selected = selected";} ?>>New</option>
+                            <option value="1" <?php if($d->status == 1){echo "selected = selected";} ?>>Confirmed</option>
+                            <option value="2" <?php if($d->status == 2){echo "selected = selected";} ?>>Shipped</option>
+                            <option value="3" <?php if($d->status == 3){echo "selected = selected";} ?>>Cancelled</option>
+                        </select>
+                    </td>
+            <input type="hidden" name="id[]" value="<?php echo $d->id; ?>" />
+            <td align="center"><?php echo $this->currency($d->total); ?></td>
+            <!-- <td align="center"><?php// echo $this->currency($d->taxes); ?></td> -->
+            <td align="center">
+            <select name="shipping_methods[]" >
+            <?php 
+            foreach ($this->shippingmethods as $k => $s) { ?>
+                <option value="<?php echo $s->id; ?>" <?php if($d->s_method == $s->id){echo "selected = selected"; } ?>><?php echo $s->name; ?></option>
+            <?php } ?>
+            </select>
+             </td>
+            <td align="center"><input type="text" size="25" name="tracking_numbers[]" value="<?php echo $d->tracking_numbers;?>" >
+             </td>
+            <td align="center"><?php 
+                foreach ($this->ddollars as $k => $v) {
+                    if ($d->id == $v->order) { ?>
+                        <input type="text" size="10" name="ddollars[]" value="<?php echo $v->amount; ?>">
+                    <?php }
+                }
+
+            ?>
+
+            </td>
+            <td align="center"><a href="<?php echo $this->url(array('controller'=>'orders', 'action'=>'display','id'=>$d->id)); ?>">Detail</a></td>
+            <td align="center"><input type="checkbox" name="delete[]" value="<?php echo $d->id; ?>" ></td>
+            </tr>
+    <?php
+}
+?>
+        </tbody>
+    </table>
+</form>
+        
+    </div>
+</div>  

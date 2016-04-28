@@ -1,0 +1,8 @@
+<?php
+    $this->layout()->setLayout('second_layout');
+    $this->ckeditor = 'ckeditor'; //To tell the layout ckeditor must be loaded . 
+    $this->form->setAction(Zend_Controller_Front::getInstance()->getBaseUrl().'/register/sendmail/reg_id/'.$this->reg_id);
+?>
+<?php echo $this->form; ?>
+<!-- Description is the id of the textarea -->
+<?php echo $this->setupEditor( 'description' );

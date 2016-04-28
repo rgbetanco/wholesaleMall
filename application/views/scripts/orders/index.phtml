@@ -1,0 +1,131 @@
+<?php 
+$this->layout()->setLayout('second_layout');
+?>
+<div class="col-md-12">
+<div class="panel panel-primary">
+    <div class="panel-heading">Order Number: <strong><?php echo $this->data[0]->order_number; ?></strong></div>
+    <div class="panel-body">
+        <a class="btn btn-warning" href="<?php echo $this->baseUrl(); ?>/orders/print/id/<?php echo $this->id; ?>">Printer Formatted</a>
+        <form action="<?php echo $this->baseUrl()?>/orders/update" method="post" >
+        <table border="0" width="100%">
+            <tr>
+                <td width="25%"><strong>First Name:</strong></td>
+                <td><?php echo $this->data[0]->first_name?></td>
+                <td><strong>Last Name:</strong></td>
+                <td><?php echo $this->data[0]->last_name?></td>
+            </tr>
+            <tr>
+                <td><strong>Phone Number:</strong></td>
+                <td><?php echo $this->data[0]->phone ?></td>
+                <td><strong>Drop Ship:</strong></td>
+                <td><?php if ($this->data[0]->drop_ship == 1){echo "Yes";}else{echo "No";} ?></td>
+            </tr>
+            <tr>
+            <input type="hidden" name="id" value="<?php echo $this->data[0]->id ?>" />
+                <td><strong>Billing Address:</strong></td>
+                <td colspan="0"><?php echo $this->data[0]->b_address; ?></td>
+                <td><strong>Billing city:</strong></td>
+                <td colspan="0"><?php echo $this->data[0]->b_city; ?></td>
+            </tr>
+            <tr>
+                <td><strong>Billing State:</strong></td>
+                <td colspan="0"><?php echo $this->data[0]->b_state; ?></td>
+                <td><strong>Billing Zip-Code:</strong></td>
+                <td colspan="0"><?php echo $this->data[0]->b_zip; ?></td>
+            </tr>
+            <tr>
+                <td><strong>Billing Country:</strong></td>
+                <td colspan="0"><?php echo $this->data[0]->b_country; ?></td>
+                <td><strong>Billing Phone:</strong></td>
+                <td colspan="0"><?php echo $this->data[0]->b_phone; ?></td>
+            </tr>
+            <tr>
+                <td><strong>Recipient First Name:</strong></td>
+                <td colspan="0"><?php echo $this->data[0]->s_first_name; ?></td>
+                <td><strong>Recipient Last Name:</strong></td>
+                <td colspan="0"><?php echo $this->data[0]->s_last_name; ?></td>
+            </tr>
+            <tr>
+                <td><strong>Recipient Address:</strong></td>
+                <td colspan="0"><?php echo $this->data[0]->s_address; ?></td>
+                <td><strong>Shipping Method:</strong></td>
+                <td colspan="0"><?php echo $this->s_method; ?></td>
+            </tr>
+            <tr>
+                <td><strong>Recipient State:</strong></td>
+                <td colspan="0"><?php echo $this->data[0]->s_state; ?></td>
+                <td><strong>Recipient Zip-Code:</strong></td>
+                <td colspan="0"><?php echo $this->data[0]->s_zip; ?></td>
+            </tr>
+            <tr>
+                <td><strong>Recipient Country:</strong></td>
+                <td colspan="0"><?php echo $this->data[0]->s_country; ?></td>
+                <td><strong>Recipient Phone:</strong></td>
+                <td colspan="0"><?php echo $this->data[0]->s_phone; ?></td>
+            </tr>
+            <tr>
+                <td><strong>Note Sent by Customer:</strong></td>
+                <td colspan="10"><?php echo $this->data[0]->note; ?></td>
+            </tr>
+            <tr>
+                <td><strong>Status:</strong></td>
+                <td colspan="10">
+                    <select name="status" class="form-control" style="width: 150px">
+                        <option value="0" <?php if($this->data[0]->status == 0){echo 'selected=selected';}?> >New</option>
+                        <option value="1" <?php if($this->data[0]->status == 1){echo 'selected=selected';}?> >Confirmed</option>
+                        <option value="2" <?php if($this->data[0]->status == 2){echo 'selected=selected';}?> >Shipped</option>
+                        <option value="3" <?php if($this->data[0]->status == 3){echo 'selected=selected';}?> >Cancelled</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Tracking Numbers:</strong> <br>(Separate them by comas)</td>
+                <td colspan="10"><input class="form-control" type="text" name="tracking_numbers" value="<?php echo $this->data[0]->tracking_numbers; ?>" /></td>
+            </tr>
+
+            <!-- <tr>
+                <td><strong>Taxes $:</strong></td>
+                <td colspan="10"><input class="form-control" type="text" style="width: 100px" name="taxes" value="<?php// echo $this->data[0]->taxes; ?>" /></td>
+            </tr> -->
+
+            <tr>
+                <td><strong>Shipping Cost $:</strong></td>
+                <td colspan="10"><input class="form-control" type="text" style="width: 100px" name="shipping_cost" value="<?php if($this->data[0]->shipping_cost > 0){ echo $this->data[0]->shipping_cost; } ?>" /></td>
+            </tr>
+            <tr>
+                <td><strong>Subtotal:</strong></td>
+                <td colspan="10"><?php echo $this->currency($this->subtotal); ?></td>
+            </tr>
+            <tr>
+                <td><strong>Discount:</strong></td>
+                <td colspan="10"><?php if($this->data[0]->discount > 0) { echo $this->currency($this->data[0]->discount); } ?></td>
+            </tr>
+            <tr>
+                <td><strong>Combos' Discount:</strong></td>
+                <td colspan="10"><?php if($this->data[0]->discount_cmb > 0){echo $this->currency($this->data[0]->discount_cmb); }?></td>
+            </tr>
+            <tr>
+                <td><strong>Total:</strong></td>
+                <td colspan="10"><?php echo $this->currency($this->total+$this->data[0]->taxes+$this->data[0]->shipping_cost-$this->data[0]->discount-$this->data[0]->discount_cmb); ?></td>
+            </tr>
+            <tr>
+                <td><strong>Total Dogo Dollars Available:</strong></td>
+                <td colspan="10"><?php if($this->ddollars){ echo $this->ddollars; } ?></td>
+            </tr>
+            <tr>
+                <td><strong>Note *This note will be send to the customer automatically:</strong></td>
+                <td colspan="99"><textarea name="note_to_customer" id="" cols="70" rows="5"><?php echo $this->data[0]->note_to_customer; ?></textarea></td>
+            </tr>
+            <tr>
+                <td><strong>Note *This note is for admin only:</strong></td>
+                <td colspan="99"><textarea name="note_for_admin" id="" cols="70" rows="5"><?php echo $this->data[0]->note_for_admin; ?></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="99"><input class="btn btn-primary" type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+        </form>
+    </div>
+</div>
+    <?php echo $this->action('index', 'orderdetail', null, array('id'=>$this->id)); ?>
+</div>

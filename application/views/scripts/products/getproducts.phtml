@@ -1,0 +1,8 @@
+<?php
+$this->layout()->disableLayout();
+
+echo "<option value=-1>Not Specified</option>";
+foreach($this->data as $d){
+    if($this->pro_id == $d->id){$selected = "selected = selected";} else {$selected = "";}
+    echo "<option value='".$d->id."' $selected >".$d->name."</option>";
+}

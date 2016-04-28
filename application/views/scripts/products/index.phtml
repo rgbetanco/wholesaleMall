@@ -1,0 +1,101 @@
+<?php
+$this->layout()->setLayout('second_layout');
+?>
+
+<!-- Search  -->
+<div class="col-md-6">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Search & Filters</div>
+        <div class="panel-body">
+            <div style="position:relative; float: left; left: 50px">
+                 <form action=<?php echo $this->baseUrl() . "/products/index"; ?> method="post" class="form-horizontal" role="form">
+                    <table>
+                        <tr>
+                            <td>
+                                <?php echo $this->formText('search', '', array('size' => 25, 'class' => 'form-control')); ?>
+                            </td>
+                            <td>
+                                <?php echo $this->formSubmit('Submit', 'Submit', array('size' => 5, 'class' => 'btn btn-default')); ?>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div style="position:relative; float: left; width: 100%; left: 60px; margin-top: 20px; margin-bottom: 20px">
+                <ul style="list-style-type:none; margin: 0; padding: 0">
+                    <li style="display:inline"><a class="btn btn-primary" href=<?php echo $this->baseUrl() . "/products/index/search/active"; ?> >Active</a></li>
+                    <li style="display:inline"><a class="btn btn-primary" href=<?php echo $this->baseUrl() . "/products/index/search/new"; ?>>New</a></li>
+                    <li style="display:inline"><a class="btn btn-primary" href=<?php echo $this->baseUrl() . "/products/index/search/pre_order"; ?>>Pre-Order</a></li>
+                    <li style="display:inline"><a class="btn btn-primary" href=<?php echo $this->baseUrl() . "/products/index/search/on_sale"; ?>>On Sale</a></li>
+                    <li style="display:inline"><a class="btn btn-primary" href=<?php echo $this->baseUrl() . "/products/index/"; ?>>All</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search - start quick links -->
+<div class="col-md-6">
+    <a href="<?php echo $this->url(array('controller' => 'products', 'action' => 'add')); ?>" class="btn btn-warning">Add New Product</a>
+</div>
+
+<!--end of quick links - listing table start-->
+<div class="col-md-12">
+<div class="panel panel-primary">
+    <div class="panel-heading">Product List</div>
+    <div class="panel-body">
+<form action=<?php echo $this->baseUrl() . "/products/update" ?> method="post" onsubmit="return confirm('Are you sure you want to submit this form?');">
+    <?php
+    if (sizeof($this->products) > 0) {
+        ?>
+    <table>
+            <thead>
+                <tr>
+                    <th><a href="<?php echo $this->url(array('controller' => 'products', 'action' => 'index', 'sort' => 'name')); ?>">Product Name</a></th>
+                    <th><a href="<?php echo $this->url(array('controller' => 'products', 'action' => 'index', 'sort' => 'product_id')); ?>">Product Id</a></th>
+                    <th><a href="<?php echo $this->url(array('controller' => 'products', 'action' => 'index', 'sort' => 'r_price')); ?>">Retail</a></th>
+                    <th><a href="<?php echo $this->url(array('controller' => 'products', 'action' => 'index', 'sort' => 'w_price')); ?>">Wholesale</a></th>
+                    <th><a href="<?php echo $this->url(array('controller' => 'products', 'action' => 'index', 'sort' => 'o_price')); ?>">On Sale</a></th>
+                    <th align="center">Active</th>
+                    <th align="center">New</th>
+                    <th align="center">Pre-Order</th>
+                    <th align="center">On Sale</th>
+                    <th align="center">Delete</th>
+                    <th><center>More</center></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="13"><center><?php echo $this->paginationControl($this->products, 'Elastic', 'pagecontrol.phtml'); ?></center></td>
+            </tr>
+            </tfoot>
+            <tbody>
+                <?php foreach ($this->products as $product) { ?>
+                    <tr>
+                        <?php echo $this->formText('id[]', $product->id, array('readonly' => TRUE, 'hidden' => TRUE)); ?>
+                        <td><?php echo $this->formText('name[]', $product->name, array('size' => 40, 'class'=>'form-control')); ?></td>
+                        <td><?php echo $this->formText('product_id[]', $product->product_id, array('size' => 40, 'class'=>'form-control')); ?></td>
+                        <td><?php echo $this->formText('r_price[]', $product->r_price, array('size' => 10, 'class'=>'form-control')); ?></td>
+                        <td><?php echo $this->formText('w_price[]', $product->w_price, array('size' => 10, 'class'=>'form-control')); ?></td>
+                        <td><?php echo $this->formText('o_price[]', $product->o_price, array('size' => 10, 'class'=>'form-control')); ?></td>
+                        <td align="center"><?php echo $this->formCheckbox('active[]', $product->id, array('size' => 10, 'checked' => $product->active)); ?></td>
+                        <td align="center"><?php echo $this->formCheckbox('new[]', $product->id, array('size' => 10, 'checked' => $product->new)); ?></td>
+                        <td align="center"><?php echo $this->formCheckbox('pre_order[]', $product->id, array('size' => 10, 'checked' => $product->pre_order)); ?></td>
+                        <td align="center"><?php echo $this->formCheckbox('on_sale[]', $product->id, array('size' => 10, 'checked' => $product->on_sale)); ?></td>
+                        <td align="center"><?php echo $this->formCheckbox('delete[]', $product->id, array('checked' => FALSE)); ?></td>
+                        <td align="center"><a href="<?php echo $this->url(array('controller' => 'products', 'action' => 'detail', 'id' => $product->id)); ?>">Details</a></td>
+                    </tr>
+                <?php } ?>
+                <tr>
+                    <td colspan="7"><?php echo $this->formSubmit('submit', 'Submit', array('class' => 'btn btn-primary')) ?></td>
+                    <td colspan="5"><a href="<?php echo $this->url(array('controller' => 'products', 'action' => 'add')); ?>" class="btn btn-warning">Add New Product</a></td>
+
+                </tr>
+            </tbody>
+        </table>
+        <input type="hidden" name="page" value="<?php echo $this->page?>" />
+    </form>
+    <?php } ?>
+
+    </div>
+</div>
+</div>

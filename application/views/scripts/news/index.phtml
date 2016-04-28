@@ -1,0 +1,73 @@
+<?php
+$this->layout()->setLayout('second_layout');
+$this->ckeditor = 'ckeditor'; 
+?>
+
+<div class="panel panel-primary">
+        <div class="panel-heading">Message</div>
+        <div class="panel-body">
+            <form method="post" action="<?php echo $this->url(array('controller'=>'msg','action'=>'update')) ?>">
+            <table>
+                <tr>
+                    <td>Content</td>
+                    <td><textarea cols="40" rows="2" name="msg">
+                        <?php foreach($this->msg as $m) { 
+                            echo $m->description;
+                         }    
+                        ?>
+                        </textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Submit" class="btn btn-primary" /> <input type="reset" value="reset" class="btn btn-danger" /></td>
+                </tr>
+            </table>
+            </form>
+        </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">News</div>
+    <div class="panel-body">
+        <form action="<?php echo $this->url(array('controller'=>'news', 'action'=>'update')) ?>" method="post" onsubmit="return confirm('Are you sure you want to submit this form?');" >
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td><a href="<?php echo $this->url(array('controller'=>'news','action'=>'index', 'sort'=>'title'));?>">Title</a></td>
+            <td><center>Banner</center></td>
+            <td><a href="<?php echo $this->url(array('controller'=>'news','action'=>'index', 'sort'=>'sort'));?>">Sort</a></td>
+            <td>Active</td>
+            <td><center>Delete</center></td>
+            <td><center>Edit</center></td>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="2"><input type="submit" value="Submit" class="btn btn-primary"></td>
+            <td colspan="4" align="right"><a href="<?php echo $this->url(array('controller'=>'news','action'=>'add'));?>" class='btn btn-warning'>Add News</a></td>
+        </tr>
+        <tr>
+            <td colspan="8"><center><?php echo $this->paginationControl($this->news, 'Elastic', 'pagecontrol.phtml'); ?></center></td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <?php foreach($this->news as $d){ ?>
+        <tr>
+    <input type="hidden" name="id[]" value="<?php echo $d->id?>" />
+            <td><input type="text" class="form-control" name="title[]" value="<?php echo $d->title; ?>"></td>
+            <td align="center"><?php echo $d->pic; ?></td>
+            <td width="100"><input type="text" class="form-control" name="order[]" value="<?php echo $d->sort; ?>" ></td>
+            <td width="150"><select name="active[]" class="form-control">
+                    <option value="1" <?php if($d->active == 1){echo 'selected=selected';}?>>Active</option>
+                    <option value="0" <?php if($d->active == 0){echo 'selected=selected';}?>>Disabled</option>
+                </select></td>
+                <td align="center"><input type="checkbox" name="delete[]" value="<?php echo $d->id ?>"</td>
+                <td align="center"><a href="<?php echo $this->url(array('controller'=>'news','action'=>'edit', 'id'=>$d->id))?>">Edit</a></td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
+</form>
+    </div>
+</div>
+<?php
+echo $this->setupEditor( 'msg' );

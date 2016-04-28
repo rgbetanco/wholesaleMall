@@ -1,0 +1,212 @@
+<?php echo $this->doctype(); ?>
+<head>
+    <?php $this->headTitle()->append('Register'); ?>
+    <?php echo $this->headTitle('Admin'); ?>
+    <?php $this->headLink()->prependStylesheet($this->baseUrl() . '/css/site.css'); ?>
+    <?php $this->headLink()->prependStylesheet($this->baseUrl() . '/css/navigation.css'); ?>
+    <?php $this->headLink()->prependStylesheet($this->baseUrl() . '/css/tablestyle.css'); ?>
+    <?php $this->headLink()->prependStylesheet($this->baseUrl() . '/css/jquery-ui-1.10.4.custom.min.css'); ?>
+    <?php $this->headLink()->prependStylesheet($this->baseUrl() . '/css/bootstrap.min.css'); ?>
+    <?php $this->headLink()->prependStylesheet($this->baseUrl() . '/css/bootstrap-theme.min.css'); ?>
+    <?php $this->headLink()->prependStylesheet($this->baseUrl() . '/css/colpick.css'); ?>
+
+    <?php $this->headScript()->appendFile('http://maps.google.com/maps/api/js?sensor=true'); ?>
+    <?php $this->headScript()->appendFile($this->baseUrl() . '/js/jquery-1.10.2.js'); ?>
+    <?php $this->headScript()->appendFile($this->baseUrl() . '/js/jquery-ui-1.10.4.custom.min.js'); ?>
+    <?php $this->headScript()->appendFile($this->baseUrl() . '/js/colpick.js'); ?>
+    <?php $this->headScript()->appendFile($this->baseUrl() . '/js/jquery.ui.map.full.min.js'); ?>
+    <!-- validation plugin -->
+    <?php $this->headScript()->appendFile('http://jqueryvalidation.org/files/dist/jquery.validate.min.js'); ?>
+    <?php $this->headScript()->appendFile('http://jqueryvalidation.org/files/dist/additional-methods.min.js'); ?>
+    <?php
+    echo $this->headScript();
+    echo $this->headLink();
+    ?>
+    <?php
+    if ($this->ckeditor) {
+        echo $this->headScript()->appendFile($this->baseUrl() . '/js/ckeditor/ckeditor.js');
+    }
+    ?>
+    <?php echo $this->headScript()->appendFile($this->baseUrl() . '/js/bootstrap.min.js'); ?>
+</head>
+<style>
+    body {border:0px solid black; margin:0 auto; width:100%; background:#fff; word-wrap:break-word;}
+
+    #header {background:#FFF; border-bottom: 1px solid #ccc; min-height: 100px}
+
+    #outer1 {float:left; width:15%; background:#FFF;}
+    #outer2 {float:left; width:70%; background:#FFF;}
+    #outer3 {float:right; width:15%; background:#FFF;}
+    #outer1, #outer2, #outer3 {padding-bottom:32767px; margin-bottom:-32767px;}
+
+    #wrapper {overflow: hidden; background:#fff; width: 100%}
+
+
+    #footer {clear:both; background:#455c5a; min-height: 50px}
+
+    h1 {font-size:20px; margin:0; padding:10px 0; color:#fff;}
+    h3 {font-size:18px; margin:0; padding:8px 0;}
+    .content {padding:10px;}
+    p {font-size:12px; line-height:1.5em; margin:0; padding:5px 0;}
+    #footer p,
+    #header p {color:#fff;}
+    #footer a {color:#fff;}
+    #footer a:hover {text-decoration:none;}
+    .menu ul {position:relative; float: left; list-style-type: none; margin: 0; padding: 0}
+    .menu li {display: inline-block; margin-left: 15px}
+    .menu {position:relative; float:left; left:100px; top: 50px}
+</style>
+<!-- Color Picker style and script -->
+<script>
+$(document).ready(function(){
+    $('#picker').colpick({
+        layout: 'hex',
+        submit: 0,
+        colorScheme: 'dark',
+        onChange: function(hsb, hex, rgb, el, bySetColor) {
+            $(el).css('border-color', '#' + hex);
+            // Fill the text box just if the color was set using the picker, and not the colpickSetColor function.
+            if (!bySetColor)
+                $(el).val(hex);
+        }
+    }).keyup(function() {
+        $(this).colpickSetColor(this.value);
+    });
+});    
+ 
+</script>
+
+<style>
+    table {
+        clear: both;
+        border-collapse: collapse;
+    }
+    td {
+        padding: 10px;
+    }
+</style>
+
+<!--[if lte IE 7]>
+<style type="text/css">
+body {word-wrap:break-word;}
+#outer2 {float:left; width:59.8%; background:#c0c0c0;}
+
+/* for IE6 */
+* html #wrapper {display:inline-block;}
+</style>
+<![endif]-->
+
+</head>
+<body>
+    <div id="header">
+        <div class="content">
+
+           <!--  <div style="position:relative; float:left">
+                <img src="<?php //echo $this->baseUrl() . '/img/logo.png'; ?>" height="80" />
+            </div>
+             -->
+            <!--            <div class="menu">-->
+
+            <nav class="navbar navbar-inverse navbar-fixe-top" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="<?php echo $this->baseUrl().'/orders/list'; ?>">Dogo Admin</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="<?php echo $this->baseUrl() . '/orders/list'; ?>" >Orders</a></li>
+                            <li><a href="<?php echo $this->baseUrl() . '/register/list'; ?>" >Customers</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                  <li><a href="<?php echo $this->baseUrl() . '/products/index'; ?>">Product List</a></li>
+                                  <li><a href="<?php echo $this->baseUrl();?>/combos/display/search/">Combos</a></li>
+                                  <li><a href="<?php echo $this->baseUrl() . '/categories/display'; ?>" >Categories</a></li>
+                                  <li><a href="<?php echo $this->baseUrl() . '/colors/display'; ?>" >Color/Sizes</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Size Chart<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                  <li><a href="<?php echo $this->baseUrl() . '/sizes/sizecategory'; ?>">Categories</a></li>
+                                  <li><a href="<?php echo $this->baseUrl() . '/sizes/chart'; ?>" >Chart Info</a></li>
+                                  <li><a href="<?php echo $this->baseUrl() . '/sizes/changemsg'; ?>" >Chart Text</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" >Settings<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="<?php echo $this->baseUrl() . '/basicsettings/display'; ?>" >Basic Settings</a></li>
+                                    <li><a href="<?php echo $this->baseUrl() . '/mass/index'; ?>" >Mass Mailing</a></li>
+                                    <li><a href="<?php echo $this->baseUrl() . '/home/index'; ?>" >Home</a></li>
+                                    <li><a href="<?php echo $this->baseUrl() . '/basicsettings/aboutus'; ?>" >About us</a></li>
+                                    <li><a href="<?php echo $this->baseUrl() . '/basicsettings/contactus'; ?>" >Contact Us</a></li>
+                                    <li><a href="<?php echo $this->baseUrl() . '/stores/index'; ?>" >Stores</a></li>
+                                    <li><a href="<?php echo $this->baseUrl() . '/news/index'; ?>" >News</a></li>
+                                    <li><a href="<?php echo $this->baseUrl() . '/importdb/index'; ?>" >Import from Sage</a></li>
+                                    <li><a href="<?php echo $this->baseUrl() . '/export/index'; ?>" >Export to Volusion</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="<?php echo $this->baseUrl() . '/discounts/list'; ?>" >Discounts</a></li>
+                            
+                            <li><?php if (Zend_Auth::getInstance()->hasIdentity()) { ?><a href="<?php
+                                    echo $this->baseUrl() . '/authentication/logout';
+                                }
+                                ?>" >Logout</a>
+                            </li>
+                            <li><a href="#">
+                                    <?php
+                                    if (Zend_Auth::getInstance()->hasIdentity()) {
+                                        echo "Welcome: " . Zend_Auth::getInstance()->getIdentity()->username;
+                                    }
+                                    ?>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!--            </div>-->
+            
+        </div>
+    </div> <!-- end header -->
+
+    <div id="wrapper">
+<!--         <div id="outer1">
+            <div class="content">
+
+            </div>
+        </div>
+ -->
+
+        <div id="outer2_1">
+            <div class="col-md-12" style="margin-top:20px;">
+                <?php echo $this->layout()->content; ?>
+            </div> <!-- end content -->
+        </div> <!-- end outer2 -->
+
+
+ <!--        <div id="outer3">
+            <div class="content">
+
+            </div> 
+        </div>
+ -->
+
+
+    </div><!-- end #wrapper -->
+
+    <div id="footer">
+        <div class="content">
+            <p>Copyright &copy;2014 Ronald Garcia - www.0-Distance.com | <a href="http://www.0-distance.com"  accesskey="C" title="Designer Contact Information">Admin Panel Designer Contact Information</a></p>
+        </div>
+    </div> <!-- end footer -->
+</body>
+</html>

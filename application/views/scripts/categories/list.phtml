@@ -1,0 +1,12 @@
+<?php
+	//using this in the navigation menu
+	foreach ($this->categories as $category){ ?>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color: transparent; margin-top: -10px"><?php echo $category->name; ?></a>
+                    <ul class="dropdown-menu" style="background-color:#fcabcb;">
+                        <?php echo $this->action('list','subcategories',null,array('id'=>$category->id)); ?>
+                    </ul>
+                </li>
+<?php
+        }

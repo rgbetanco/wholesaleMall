@@ -1,0 +1,18 @@
+<div class="panel-group" id="accordion">
+  <?php foreach($this->categories as $cat){ ?>  
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#<?php echo $cat->id; ?>">
+           <?php echo $cat->name; ?>
+        </a>
+      </h4>
+    </div>
+    <div id="<?php echo $cat->id; ?>" class="panel-collapse collapse">
+      <div class="panel-body">
+        <?php echo $this->action('displaylist','subcategories',null,array('id'=>$cat->id)); ?>
+      </div>
+    </div>
+  </div>
+  <?php } ?>
+</div>

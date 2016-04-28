@@ -1,0 +1,15 @@
+<?php
+$this->layout()->setLayout('second_layout');
+$id = $this->reg_id;
+$this->form->setAction(Zend_Controller_Front::getInstance()->getBaseUrl().'/ddollars/add/id/'.$id);
+
+echo $this->errorMessage;
+?>
+<script>
+  $(document).ready(function(){
+      $('#datepicker').datepicker({dateFormat: "yy-mm-dd", defaultDate: "+3m"} );
+  });
+</script>
+<div class="col-md-12">
+<?php echo $this->form; ?>
+</div>

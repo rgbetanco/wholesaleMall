@@ -1,0 +1,217 @@
+<style type="text/css">
+    .container1 {
+        margin-left: 0px;
+        width:400px;
+        border-radius: 0px;
+        border:0px solid black;
+    }
+    .container1 img {
+        max-width: 100%;
+    }
+</style>
+<script>
+    function changepic(elem) {
+        var src = elem.name;
+        $('#mg').attr('src', src);
+        $('.magnify-large').css('background-image', 'url(' + elem.name + ')');
+    }
+
+    function addtocart() {
+
+        var detail_form = document.getElementById('forms_detail');
+        var pro_id = $("input[name='pro_id[]']").serializeArray();
+        var quantity = $("input[name='qty[]']").serializeArray();
+        var price = $("input[name='price[]']").serializeArray();
+        var subpro_id = $("input[name='subpro_id[]']").serializeArray();
+        for (var i = pro_id.length - 1; i >= 0; i--) {
+
+            if (quantity[i].value != "" || quantity[i].value > 0 ) {
+
+                $.post('<?php echo $this->baseUrl() ?>/shopping/add', {'proid': pro_id[i].value, 'quantity': quantity[i].value, 'price': price[i].value, 'subpro_id':subpro_id[i].value}, function(response) {
+                    $(".shopping").html(response);
+                    $("#shopcart").attr("href", "<?php echo $this->baseUrl() ?>/shopping/list");
+                });
+
+            };
+            
+        };
+
+        $("input[name='qty[]']").val("");
+
+        // var quantity = detail_form.elements['quantity[]'];
+        // var price = detail_form.elements['price[]'];
+        // var subpro_id = detail_form.elements['subpro_id[]'];
+        // for (var i = 0; i < pro_id.length; i++) {
+        //     jQuery.each(pro_id, function(i, id) {
+        //         if (quantity[i].value !== "" || quantity[i].value > 0) {
+        //             $.post('<?php echo $this->baseUrl() ?>/shopping/add', {'proid': pro_id[i].value, 'quantity': quantity[i].value, 'price': price[i].value, 'subpro_id':subpro_id[i].value}, function(response) {
+        //                 $(".shopping").html(response);
+        //                 $("#shopcart").attr("href", "<?php echo $this->baseUrl() ?>/shopping/list");
+        //             });
+        //         }
+        //     });    
+        // }
+
+        // var pro_id = $("input[name='pro_id[]']").serializeArray();
+        // var quantity = $("input[name='qty[]']").serializeArray();
+        // var price = $("input[name='price[]']").serializeArray();
+        // var subpro_id = $("input[name='subpro_id[]']").serializeArray();
+        // jQuery.each(quantity, function(i, qty) {
+        //     if (qty.value !== "" || qty.value > 0) {
+        //         $.post('<?php echo $this->baseUrl() ?>/shopping/add', {'proid': pro_id[i].value, 'quantity': qty.value, 'price': price[i].value, 'subpro_id':subpro_id[i].value}, function(response) {
+        //             $(".shopping").html(response);
+        //             $("#shopcart").attr("href", "<?php echo $this->baseUrl() ?>/shopping/list");
+        //         });
+        //     }
+        // });        
+
+        //window.location = "<?php echo $this->baseUrl() ?>/shopping/list";
+    }
+
+    function checkquantity(v, i){
+        if(v.value > i){
+            $(v).val(i);
+            alert('We only have '+i+' left in our stock - thanks for your understanding');
+        } else {
+            
+           // $("input[name='qty[]']").val("");
+        }
+    }
+</script>
+<div class="col-12" style="width: 940px; border: 0px solid black; margin-top: 15px;">
+    <div class="col-5">
+        <!--        pictures goes in this part      -->
+        <div class="thumbnail container1" style="margin-left:-15px; padding-top:-20px">
+            <img data-toggle="magnify1" id="mg" src="<?php echo $this->baseUrl() ?>/products_img/<?php echo $this->pro_data[0]->picture ?>" alt="<?php echo $this->pro_data[0]->name ?>">
+        </div>
+        <!-- Thumnbnails -->
+        <?php foreach ($this->images as $i) { ?>
+            <div class="col-2" style="padding:0px; margin-right: 10px; margin-top: -12px">
+                <div style="padding:0px; margin: 0px">
+                    <a href="" class="thumbnail" style="border-radius: 0px; width: 60px; height: 60px">
+                        <img onmouseover="changepic(this)" name="<?php echo $this->baseUrl() ?>/products_img/<?php echo $i->name ?>" src="<?php echo $this->baseUrl() ?>/products_thu/<?php echo $i->name ?>" width="70" style="padding:0px;border:0px solid black; margin: 0px" />
+                    </a>
+                </div>
+            </div>
+        <!-- end of Thumnbnails -->
+        <!-- discounts -->
+        <?php } ?>
+       <?php if (count($this->procolorsizes) > 0 && Zend_Auth::getInstance()->hasIdentity()) { ?>
+       <?php if ($this->pro_data[0]->on_sale == 0) { ?>
+       <div class="col-12" style="margin-left:-15px">
+            <?php echo $this->action('showdiscount','discounts',null,array('id'=>$this->pro_data[0]->id)); ?>
+       </div>
+       <?php } } ?>
+       <!-- end of discounts -->
+       <!-- show combos -->
+       <?php if (count($this->procolorsizes) > 0 && Zend_Auth::getInstance()->hasIdentity()) { ?>
+       <?php if(count($this->combo)>0){?>
+        <?php foreach($this->combo as $k => $c){?>
+            <?php echo $this->action('showcombos','products',null,array('id'=>$this->id,'combo_id'=>$k)); ?>
+        <?php } ?>
+       <?php } } ?>
+        <!-- end of show combos -->
+    </div>
+    <div class="col-7">
+        <div class="panel panel-default" style="margin-left:10px; width: 520px; border-radius: 0px">
+            <div class="panel-heading" style="background-color: #fcabcb; color:white; border-radius: 0px">
+                <?php echo $this->pro_data[0]->name ?>
+            </div>
+            <div class="panel-body">
+                <?php echo $this->pro_data[0]->description ?>
+                <?php if (Zend_Auth::getInstance()->hasIdentity()) { ?>
+                    <?php if ($this->pro_data[0]->on_sale == 1) { ?>
+                        <strong>Price: <span style="color:red; text-decoration: line-through"><?php echo $this->currency($this->pro_data[0]->w_price); ?></span> - Sale: </strong><strong><span style="color:red"><?php echo $this->currency($this->pro_data[0]->o_price); ?></span></strong>
+                    <?php } else { ?>
+                        <strong>Price:<span style="color:black"><?php echo $this->currency($this->pro_data[0]->w_price) ?></span></strong>
+                    <?php } ?>
+                <?php } else {
+                    if ($this->pro_data[0]->dogopet_url != "") { ?>
+                            <center><button onclick="window.location.href='<?php echo $this->pro_data[0]->dogopet_url; ?>';" class="btn btn-sm btn-default" style="background-color:#fcabcb">Shop at dogopet.com</button></center>
+                <?php } } ?>
+            </div>
+        </div>
+        <!-- second description -->
+        <?php if ($this->pro_data[0]->expiration > date('Y-m-d')): ?>
+        <?php if($this->pro_data[0]->sec_description) { ?>
+        <div class="panel panel-default" style="margin-left:10px; width: 520px; border-radius: 0px">
+            <div class="panel-heading" style="background-color: #fcabcb; color: white; border-radius: 0px">
+                <?php echo $this->pro_data[0]->name ?>
+            </div>
+            <div class="panel-body">
+                <?php echo $this->pro_data[0]->sec_description ?>
+            </div>
+        </div>
+        <?php } ?>
+        <!-- available color sizes -->
+        <?php endif ?>
+        <?php if (count($this->procolorsizes) > 0 && Zend_Auth::getInstance()->hasIdentity()) { ?>
+            <div class="panel panel-default" style="margin-left:10px; width: 520px">
+                <div class="panel-heading"; style="background-color: #fcabcb; color:white; border-radius: 0px">
+                    Available Colors and Sizes
+                </div>
+                <div class="panel-body">
+                    <form action="#" method="post" id="form_detail">
+                        <table cellpadding="5">
+                            <thead>
+                                <tr>
+                                    <th>Style No</th>  
+                                    <th>Color</th>
+                                    <?php if ($this->pro_data[0]->on_sale == 1) { ?>
+                                        <th colspan="99">Size/On Sale Price</th>
+                                    <?php } else { ?>
+                                        <th colspan="99">Size/Price</th>
+                                    <?php } ?>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $procolorsize = 0; ?>
+                                <?php foreach ($this->procolorsizes as $p) { ?>
+                                    <?php if($procolorsize != $p['c_id']) { $procolorsize = $p['c_id']; ?>
+
+                                    <tr>
+                                        <td><?php $i = strrpos($p['sub_id'], "-"); $sub = substr($p['sub_id'], 0, $i); echo preg_replace('/\s+/', '', $sub); ?></td>
+                                        <td colspan="99"><?php echo $this->action('getname', 'colors', null, array('id' => $p['c_id'])); ?></td>
+                                        <td colspan="99">
+                                            <table>
+                                                <tr>
+                                                    <?php foreach ($this->procolorsizes as $r) { ?>
+                                                    <?php if($p['c_id'] == $r['c_id']){ ?>
+                                                    <?php if ($r['inventory'] > 0) { ?>
+                                                    <td><div style="width:60%"><?php echo $this->action('getname', 'sizes', null, array('id' => $r['s_id'])); ?><?php if ($this->pro_data[0]->on_sale == 1) { ?>
+                                                        <?php echo $this->currency($r['o_price']); echo "<br>"; ?>
+                                                        <input type="hidden" value="<?php echo $r['o_price']; ?>" name="price[]" />
+                                                        <?php } else { ?>
+                                                        <?php echo $this->currency($r['w_price']) ?>
+                                                        <input type="hidden" value="<?php echo $r['w_price']; ?>" name="price[]" />
+                                                        <?php } ?>
+                                                        </div>
+                                                    
+                                                        <input type="text" id="<?php echo $r['sub_id']; ?>" autocomplete="off" size="1" name="qty[]" class="form-control" onchange="checkquantity(this, <?php echo $r['inventory']; ?>)" />
+                                                     
+                                                        <input type="hidden" value="<?php echo $r['sub_id']; ?>" name="pro_id[]" />
+                                                        <input type="hidden" value="<?php echo $r['p_id']; ?>" name="subpro_id[]" />
+                                                    </td>
+                                                    <?php } } } }?>
+                                                </tr>
+                                            </table>
+                                        </td>                                     
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="99">
+                                        <button type="button" class="btn btn-default btn-sm" onclick="addtocart()">
+                                            <span class="glyphicon glyphicon-shopping-cart"></span><span style="font-size:11px"> Add to Shopping Cart</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                </div>
+           </div>
+<?php } ?>
+    </div>
+</div>

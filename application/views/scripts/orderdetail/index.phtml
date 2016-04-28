@@ -1,0 +1,67 @@
+<?php
+$this->layout()->setLayout('second_layout');
+$total = 0;
+?>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Order Detail</div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td width="40%"><strong>Product's Name</strong></td>
+                        <td><strong><center>Sub_id</center></strong></td>
+                        <td><strong><center>Unit Price</center></strong></td>
+                        <td><strong><center>Quantity</center></strong></td>
+                        <td><strong><center>Subtotal</center></strong></td>
+                        <td colspan="3"><strong><center>Actions</center></strong></td>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach($this->data as $d){ ?>
+                <form action="<?php echo $this->baseUrl(); ?>/orderdetail/update" method="post" onsubmit="confirm('Are you sure you want to modify the order?')">
+                <tr>
+                    <td>
+                    <?php if ($d->deleted){ ?>
+                        <span style='color:red;text-decoration:line-through'>
+                            <span style='color:black'><?php echo $this->action('getproductname','products',null,array('pro_id'=>$d->pro_id));?>
+                            </span>
+                        </span>
+                    <?php } else { ?>
+                            <span style='color:black'><?php echo $this->action('getproductname','products',null,array('pro_id'=>$d->pro_id));?>
+                            </span>
+                    <?php } ?>
+                    
+
+                    </td>
+                    <td width="20%" align="center"><?php echo $d->sub_id; ?></td>  
+                    <td align="center"><input type="text" name="price" value="<?php echo $d->price; ?>"></td>
+                    <td align="center"><input type="text" name="quantity" value="<?php echo $d->quantity; ?>"></td>
+                    <?php if(!$d->deleted){ ?>
+                    <td align="center"><?php echo $this->currency($d->price*$d->quantity); $total += $d->price*$d->quantity; ?></td>
+                    <?php } else { ?>
+                        <td align="center"><?php echo "---" ?></td>
+                    <?php } ?>
+                    <input type="hidden" name="id" value="<?php echo $d->id; ?>" />
+                    <input type="hidden" name="order_id" value="<?php echo $d->order_id; ?>" />
+                    <td align="center"><input type="submit" name="update" value="Update" class="btn btn-primary"></td>
+                    <td align="center"><input type="submit" name="delete" value="Delete" class="btn btn-danger"></td>
+                    <td align="center"><input type="submit" name="undelete" value="unDelete" class="btn btn-warning" <?php if (!$d->deleted) {
+                        echo 'disabled';
+                    } ?>></td>
+                </tr>
+                </form>
+                <?php } ?>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" align="right"><h3>Sub-Total:</h3></td>
+                        <td align="center"><h3><?php echo $this->currency($total); ?></h3></td>
+                        <td colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="8"><center><?php echo $this->paginationControl($this->data, 'Elastic', 'pagecontrol.phtml'); ?></center></td>
+                    </tr>
+                </tfoot>
+                </table>
+        </div>
+    </div>

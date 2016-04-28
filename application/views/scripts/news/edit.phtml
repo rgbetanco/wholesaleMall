@@ -1,0 +1,11 @@
+<?php 
+$this->layout()->setLayout('second_layout');
+$this->ckeditor = 'ckeditor';
+echo $this->form;
+echo $this->setupEditor( 'description' );
+?>
+<div class="col-md-6">
+<div class="thumbnail">
+    <img src="<?php echo $this->baseUrl()?>/news_img/<?php echo $this->pic; ?>" />
+</div>
+</div>

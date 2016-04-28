@@ -1,0 +1,49 @@
+<script>
+    $(document).ready(function(){
+        address = $('#address').val();
+        $('#map_canvas').gmap('search', { 'address': address }, function(results,isFound) {
+            if (isFound) {
+                $('#map_canvas').gmap('get','map').panTo(results[0].geometry.location);
+            }
+        });
+        addmarker();
+    });
+    function gotolocation(){
+        address = $('#search').val();
+        $('#map_canvas').gmap('search', { 'address': address }, function(results,isFound) {
+            if (isFound) {
+                $('#map_canvas').gmap('get','map').panTo(results[0].geometry.location);
+                
+                $('#latlng').val(results[0].geometry.location);
+            }
+        });
+    }
+    
+    function addmarker(){
+        long = $('#latlng').val();
+        long = long.replace('(','');
+        long = long.replace(')','');
+        $('#map_canvas').gmap('addMarker', {'position': long, 'bounds': true}).click(function() {
+                    $('#map_canvas').gmap('openInfoWindow', {'content': ''}, this);
+        });
+    }
+    
+</script>
+<?php
+$this->layout()->setLayout('second_layout');
+echo $this->form;
+$this->ckeditor = 'ckeditor'; ?>
+<div class="col-md-4">
+    <table>
+        <tr>
+            <td width='80%'><input type="text" class="form-control" name="search" id="search" onkeypress="gotolocation()" /></td>
+            <td><input type="button" class="btn btn-default" value="Search" onclick="addmarker()" /></td>
+        </tr>
+    </table>
+</div>
+<br><br>
+<div class="col-md-4">
+    <div id="map_canvas" style="width:400px;height:800px"></div>
+</div>
+<?php
+echo $this->setupEditor('address');

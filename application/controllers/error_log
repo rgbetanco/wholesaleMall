@@ -1,0 +1,8 @@
+[30-Nov-2014 20:24:46 America/Denver] PHP Fatal error:  Class 'Zend_Controller_Action' not found in /home1/nicafutb/public_html/nicaraodev/dogo/application/controllers/AuthenticationController.php on line 3
+[14-Sep-2015 08:37:30 America/Denver] PHP Fatal error:  Class 'Zend_Controller_Action' not found in /home1/nicafutb/public_html/nicaraodev/dogo/application/controllers/IndexController.php on line 3
+[14-Sep-2015 08:37:36 America/Denver] PHP Fatal error:  Class 'Zend_Controller_Action' not found in /home1/nicafutb/public_html/nicaraodev/dogo/application/controllers/BasicsettingsController.php on line 4
+[14-Sep-2015 08:37:40 America/Denver] PHP Fatal error:  Class 'Zend_Controller_Action' not found in /home1/nicafutb/public_html/nicaraodev/dogo/application/controllers/BookController.php on line 4
+[14-Sep-2015 08:37:43 America/Denver] PHP Fatal error:  Class 'Zend_Controller_Action' not found in /home1/nicafutb/public_html/nicaraodev/dogo/application/controllers/CategoriesController.php on line 3
+[14-Sep-2015 08:37:46 America/Denver] PHP Fatal error:  Class 'Zend_Controller_Action' not found in /home1/nicafutb/public_html/nicaraodev/dogo/application/controllers/CombodetailController.php on line 3
+[14-Sep-2015 08:37:50 America/Denver] PHP Fatal error:  Class 'Zend_Controller_Action' not found in /home1/nicafutb/public_html/nicaraodev/dogo/application/controllers/NewsController.php on line 3
+[14-Sep-2015 08:37:54 America/Denver] PHP Fatal error:  Class 'Zend_Controller_Action' not found in /home1/nicafutb/public_html/nicaraodev/dogo/application/controllers/SubcategoriesController.php on line 3

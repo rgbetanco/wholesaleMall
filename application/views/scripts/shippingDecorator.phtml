@@ -1,0 +1,39 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">New Shipping Address Form</div>
+  <div class="panel-body">
+        <form enctype="application/x-www-form-urlencoded" role="form" class="form-horizontal" action="<?php echo $this->element->getAction(); ?>" method="post" >
+            <table border="0" cellpadding="0" padding="0" width="100%">
+            <tr>
+                <td>First Name</td>
+                <td><?php echo $this->element->getElement('first_name'); ?></td>
+                <td>Last Name</td>
+                <td><?php echo $this->element->getElement('last_name'); ?></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td colspan="3"><?php echo $this->element->getElement('address'); ?></td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td><?php echo $this->element->getElement('city'); ?></td>
+                <td>State</td>
+                <td><?php echo $this->element->getElement('state'); ?></td>
+            </tr>
+            <tr>
+                <td>Zip Code</td>
+                <td><?php echo $this->element->getElement('zip'); ?></td>
+                <td>Country</td>
+                <td><?php echo $this->element->getElement('country'); ?></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><?php echo $this->element->getElement('phone'); ?></td>
+            </tr>
+            <tr>
+                <td colspan="4"><?php echo $this->element->getElement('submit'); ?><?php echo $this->element->getElement('reset'); ?></td>
+            </tr>
+            </table>
+          <?php echo $this->element->getElement('csrf'); ?>
+        </form>
+  </div>
+</div>

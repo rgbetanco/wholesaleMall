@@ -1,0 +1,20 @@
+ <div class="panel panel-primary">
+        <div class="panel-heading">Add New Payment Method Form</div>
+        <div class="panel-body">
+            <form enctype="application/x-www-form-urlencoded" role="form" class="form-horizontal" action="<?php echo $this->element->getAction(); ?>" method="post" >
+                <table width="100%">
+                    <tr>
+                        <td width="15%">Name</td>
+                        <td><?php echo $this->element->getElement('name'); ?></td>
+                    </tr>
+                    <tr>
+                        <td>Extra Info</td>
+                        <td><?php echo $this->element->getElement('extra'); ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><?php echo $this->element->getElement('submit'); ?><?php echo $this->element->getElement('reset'); ?></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>

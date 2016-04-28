@@ -1,0 +1,57 @@
+<?php $this->layout()->setLayout('second_layout'); 
+
+if(!$this->tab){
+    $default = "class='active'";
+    $active = "active";
+} else {
+    $default = "";
+    $active = "";
+}
+
+?>
+
+<div class="tabbable" > <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs" id="myTab">
+        <li <?php if($this->tab == 'colorform'){echo "class='active'";}else{echo $default;} ?>><a href="#colorform" data-toggle="tab">Colors</a></li>
+        <!-- <li <?php// if($this->tab == 'colorlist'){echo "class='active'";} ?>><a href="#colorlist" data-toggle="tab">Colors</a></li> -->
+        <li <?php if($this->tab == 'sizeform'){echo "class='active'";} ?>><a href="#sizeform" data-toggle="tab">Sizes</a></li>
+        <!-- <li <?php// if($this->tab == 'sizelist'){echo "class='active'";} ?>><a href="#sizelist" data-toggle="tab">Sizes</a></li> -->
+    </ul>
+    <br/>
+    <div class="tab-content">
+
+        <!--Add new and list Colors -->
+        <div class="tab-pane <?php if($this->tab == 'colorform'){echo 'active';}else{echo $active;} ?>" id="colorform">
+            <div class="width_50">
+                <?php echo $this->action('formcolor','colors',null, array());?>
+            </div>
+            <div class="width_100">
+                <?php echo $this->action('list','colors',null, array('pagec'=>$this->pagec, 'sortc'=>$this->sortc));?>
+            </div>
+        </div>
+        
+        <!--List Colors-->
+       <!--  <div class="tab-pane <?php //if($this->tab == 'colorlist'){echo 'active';} ?>" id="colorlist">
+
+                <?php //echo $this->action('list','colors',null, array('pagec'=>$this->pagec, 'sortc'=>$this->sortc, 'tab'=>'colorlist'));?>
+
+        </div> -->
+        
+        <!--Add Sizes -->
+        <div class="tab-pane <?php if($this->tab == 'sizeform'){echo 'active';} ?>" id="sizeform">
+            <div class="width_50">
+                <?php echo $this->action('form','sizes',null, array());?>
+            </div>
+            <div class="width_100">
+                <?php echo $this->action('list','sizes',null, array('pagez'=>$this->pagez, 'sortz'=>$this->sortz));?>
+            </div>
+        </div>
+        
+        <!--List Sizes -->
+        <!-- <div class="tab-pane <?php //if($this->tab == 'sizelist'){echo 'active';} ?>" id="sizelist">
+            
+                <?php //echo $this->action('list','sizes',null, array('pagez'=>$this->pagez, 'sortz'=>$this->sortz, 'tab'=>'sizelist'));?>
+           
+        </div> -->
+    </div>
+</div>

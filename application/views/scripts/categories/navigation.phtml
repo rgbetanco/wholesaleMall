@@ -1,0 +1,27 @@
+<?php
+//$this->layout()->setLayout('second_layout');
+?>
+<script>
+$(document).ready(function(){
+  jQuery('ul.nav li.dropdown').hover(function() {
+    jQuery(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(); }, function() { jQuery(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut();});
+})
+</script>
+<div class="navbar" style="padding: 0px; height: 20px">
+ <div class="navbar-primary" style="padding: 0px; height: 20px !important">
+  <nav class="navbar navbar-default" role="navigation" style="width: 940px !important; height:20px !important; padding-bottom: 0px; padding-top: 0px; border-radius: 0px; border: 0px solid black;">
+    <div class="container" style="height:18px; width: 940px; border: 0px solid black">
+      <div>
+        <ul class="nav navbar-nav" style="height:18px; padding: 0px; margin:0px">
+          <?php echo $this->action('list','categories',null, array()); ?>
+        </ul>
+        <ul class = "nav navbar-nav navbar-right" style="height:18px; padding: 0px">
+          <li>
+            <p title="This is the wholesale site" style="color:white; margin-top: 7px; padding-right: 20px">WHOLESALE</p>
+          </li>
+          </ul>
+      </div>
+    </div>  
+  </nav>
+</div> 
+</div>

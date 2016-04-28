@@ -1,0 +1,119 @@
+<?php 
+$this->layout()->setLayout('second_layout');
+?>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">Add Information</div>
+	<div class="panel-body">
+		<form action="<?php echo $this->baseUrl() ?>/sizes/addtochart" method="post" role="form" data-toggle="validator">
+		<div class="form-group col-sm-6">
+			<label for="catName" class="control-label">Cat. Name</label>
+			<select name="catName" class="form-control">
+				<?php foreach ($this->categories as $k => $v): ?>
+					<option value="<?php echo $v->name; ?>"><?php echo $v->name; ?></option>	
+				<?php endforeach ?>
+			</select>
+		</div>
+		<div class="form-group col-sm-6">
+			<label for="sizes" class="control-label">Size</label>
+			<select name="sizeName" class="form-control">
+				<?php foreach ($this->sizes as $k => $v): ?>
+					<option value="<?php echo $v->name; ?>"><?php echo $v->name; ?></option>	
+				<?php endforeach ?>
+			</select>
+		</div>
+		<div class="form-group col-sm-3">
+			<label for="lengthCM" class="control-label">Length cm</label>
+			<input type="text" class="form-control" name="lengthCM">
+		</div>
+		<div class="form-group col-sm-3">
+			<label for="lengthIN" class="control-label">Length in</label>
+			<input type="text" class="form-control" name="lengthIN">
+		</div>
+		<div class="form-group col-sm-3">
+			<label for="neckCM" class="control-label">Neck cm</label>
+			<input type="text" class="form-control" name="neckCM">
+		</div>
+		<div class="form-group col-sm-3">
+			<label for="neckIN" class="control-label">Neck in</label>
+			<input type="text" class="form-control" name="neckIN">
+		</div>
+		<div class="form-group col-sm-3">
+			<label for="girthCM" class="control-label">Girth cm</label>
+			<input type="text" class="form-control" name="girthCM">
+		</div>
+		<div class="form-group col-sm-3">
+			<label for="girthIN" class="control-label">Girth in</label>
+			<input type="text" class="form-control" name="girthIN">
+		</div>
+		<div class="form-group col-sm-3">
+			<label for="widthCM" class="control-label">Width cm</label>
+			<input type="text" class="form-control" name="widthCM">
+		</div>
+		<div class="form-group col-sm-3">
+			<label for="widthIN" class="control-label">Width in</label>
+			<input type="text" class="form-control" name="widthIN">
+		</div>
+		<div class="form-group col-sm-3">
+			<label for="sort" class="control-label">Sort</label>
+			<input type="text" class="form-control" name="sort">
+		</div>
+		<div class="form-group col-sm-12">
+			<input type="submit" class="btn btn-primary" value="Add">
+			<input type="reset" class="btn btn-danger" value="Reset">
+		</div>
+		</form>
+	</div>
+</div>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">Chart Information</div>
+	<div class="panel-body">
+	<form action="<?php echo $this->baseUrl() ?>/sizes/chart" method="post" role="form" onsubmit="return confirm('Are you sure you want to submit this form?')">
+		<table style="margin-top: -1%" border="1">
+			<thead>
+				<tr>
+					<td>Category</td>
+					<td>Size</td>
+					<td>Length cm</td>
+					<td>Length in</td>
+					<td>Neck cm</td>
+					<td>Neck in</td>
+					<td>Girth cm</td>
+					<td>Girth in</td>
+					<td>Width cm</td>
+					<td>Width in</td>
+					<td>Sort</td>
+					<td>Delete</td>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($this->data as $k => $v): ?>
+					<tr>
+						<td><?php echo $v->cat_name ?></td>
+						<td><?php echo $v->size ?></td>
+						<td><?php echo $v->length_cm ?></td>
+						<td><?php echo $v->length_in ?></td>
+						<td><?php echo $v->neck_cm ?></td>
+						<td><?php echo $v->neck_in ?></td>
+						<td><?php echo $v->girth_cm ?></td>
+						<td><?php echo $v->girth_in ?></td>
+						<td><?php echo $v->width_cm ?></td>
+						<td><?php echo $v->width_in ?></td>
+						<td><?php echo $v->sort ?></td>
+						<td><input type="checkbox" name="delete[]" value="<?php echo $v->id ?>" /></td>
+						<input type="hidden" name="id[]" value="<?php echo $v->id ?>" />
+					</tr>
+				<?php endforeach ?>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="99">
+						<input	type="submit" class="btn btn-primary" value="Submit" />
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</form>
+	</div>
+</div>

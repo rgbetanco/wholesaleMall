@@ -1,0 +1,5 @@
+<?php
+
+foreach ($this->combodetail as $c){
+    echo $this->action('getproductname','products',null,array('pro_id'=>$c->pro_id)).', ';
+}

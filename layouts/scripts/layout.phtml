@@ -1,0 +1,118 @@
+<?php echo $this->doctype(); ?>
+<html>
+<head>
+<?php $this->headTitle()->append('Dogo Pet Fashion');?>
+<?php echo $this->headTitle();?>
+<?php $this->headLink()->prependStylesheet($this->baseUrl() . '/css/navbar.css'); ?>
+<?php $this->headLink()->appendStylesheet($this->baseUrl().'/css/site.css'); ?>
+<?php $this->headLink()->appendStylesheet($this->baseUrl().'/css/navigation.css'); ?>
+<?php $this->headLink()->prependStylesheet($this->baseUrl() . '/css/tablestyle.css'); ?>
+<?php $this->headLink()->prependStylesheet($this->baseUrl() . '/css/jquery-ui-1.10.4.custom.min.css'); ?>
+<?php $this->headLink()->prependStylesheet($this->baseUrl() . '/css/bootstrap.css'); ?>
+<?php $this->headLink()->prependStylesheet($this->baseUrl() . '/css/bootstrap-theme.min.css'); ?>
+<?php $this->headLink()->prependStylesheet($this->baseUrl() . '/css/colpick.css'); ?>
+<?php $this->headLink()->prependStylesheet($this->baseUrl() . '/css/bootstrap-magnify.min.css'); ?>
+
+<?php $this->headScript()->appendFile('http://maps.google.com/maps/api/js?sensor=true'); ?>
+<?php $this->headScript()->appendFile($this->baseUrl() . '/js/jquery-1.10.2.js'); ?>
+<?php $this->headScript()->appendFile($this->baseUrl() . '/js/jquery-ui-1.10.4.custom.min.js'); ?>
+<?php $this->headScript()->appendFile($this->baseUrl() . '/js/colpick.js'); ?>
+<?php $this->headScript()->appendFile($this->baseUrl() . '/js/jquery.ui.map.full.min.js'); ?>
+
+<?php $this->headScript()->appendFile($this->baseUrl() . '/js/bootstrap.min.js'); ?>   
+<?php $this->headScript()->appendFile($this->baseUrl() . '/js/bootstrap-magnify.min.js'); ?>   
+ 
+<?php 
+    if ( $this->ckeditor ) { 
+        echo $this->headScript()->appendFile( $this->baseUrl().'/js/ckeditor/ckeditor.js');
+    }
+    
+    echo $this->headScript();
+    echo $this->headLink();
+
+    $base = $this->baseUrl();
+?>
+
+</head>
+<style>
+body {
+  margin:0px; 
+  padding:0px; 
+  font-family:Arial, Helvetica, sans-serif; 
+  font-size:13px; 
+  font-weight:normal; 
+  color:#000;
+}
+a:hover {
+    color:#888888;
+    text-decoration: none;
+}
+.panel-default .panel-heading {
+    background-color: #fcabcb;
+    color:white;
+}
+</style>
+<body>
+    <div class="container" style="border:0px solid black; width: 940px !important; position:relative">
+        <div style="border: 0px solid red; position:fixed; width:940px; height: 160px; margin: 0 auto 0 auto; z-index: 99; background-color: white">
+            <div class="row" style="margin-left:auto; margin-right: auto; margin-top:10px; width: 940px; border: 0px solid black; position:relative; float: left">
+                <div class="col-1" style="border:0px solid black; position:relative; float: left">
+                    <a href="<?php echo $this->baseUrl()?>/index/index"><img src="<?php echo $base;?>/img/logo.jpg" /></a>
+                </div>
+                <div class="col-6" style="border:0px solid green; position: relative; float: left">
+                    <?php if(Zend_Auth::getInstance()->hasIdentity()){ ?>
+                        <div class="page-header1" style="text-align:center; margin-top: 30px">
+                            <?php echo $this->action('index','msg', null, array()); ?>
+                        </div>
+                    <?php } ?>
+                </div>
+                <div class="col-5" style="text-align: right; margin: 0; padding: 0; border: 0px solid black; position:relative; float: right">
+                    <?php if(!Zend_Auth::getInstance()->hasIdentity()){ ?>
+                        <a href="<?php echo $this->baseUrl()?>/authentication/login" style="font-size:11px; color:#757479">YOUR ACCOUNT</a>
+                    <?php } else { ?>
+                        <a href="<?php echo $this->baseUrl()?>/authentication/logout" style="font-size:11px; color:#757479">LOGOUT</a>
+                        | <a href="<?php echo $this->baseUrl()?>/orders/memberlist" style="font-size:11px; color:#757479">MY ACCOUNT</a>
+                    <?php } ?>
+                    <?php
+                        if(Zend_Auth::getInstance()->hasIdentity()){
+                            if(Zend_Auth::getInstance()->getStorage()->read()->type == 'admin'){ ?>
+                                | <a href="<?php echo $this->baseUrl()?>/orders/list" style="font-size:12px">ADMIN</a>             
+                    <?php } } ?>
+
+                    <?php
+                        if(Zend_Auth::getInstance()->hasIdentity()){
+                            if(Zend_Auth::getInstance()->getStorage()->read()->type != 'admin'){ ?>
+                                | <a id="shopcart" href="<?php if($this->action('gettotal','shopping',null,array())!= 'CART'){ echo $this->baseUrl().'/shopping/list';}else{echo '#';}?>" style="font-size:12px; color:#fcabcb"><span class="shopping glyphicon glyphicon-shopping-cart" style="color: #fcabcb"><?php echo $this->action('gettotal','shopping',null,array());?></span></a><br><br> 
+                    <?php } } ?>
+
+                        <form method="post" action="<?php echo $this->baseUrl()?>/products/prosearch" class="form-inline">
+                        <div class="form-group">
+                            <input type="text" name="search" placeholder="product search" class="form-control input-sm" style="border-radius: 0px" />
+                        </div>
+                            <button type="submit" class="btn btn-sm" style="border-radius: 0px; background-color: #fcabcb">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                    </form>
+                </div>
+            </div>
+            <div class="row" style="border: 0px solid black; height: 30px; width: 940px; margin-right: auto; margin-left: auto; position:relative; float: left; margin-top: 5px">
+                <?php echo $this->action('navigation','categories',null,array());?>
+            </div>
+        </div>
+        <br>
+        <div class="row" style="border:0px solid black; margin-top: 14%; width: 940px; margin-left: auto; margin-right: auto;">
+            <?php echo $this->layout()->content; ?>
+        </div>
+        <div class="row" style="width: 940px; margin-left: auto; margin-right: auto; border: 0px solid black; border-top:1px solid #757479"> 
+            <div style="text-align:center; border: 0px solid black">
+                <ul style="list-style-type: none; padding-top: 15px;">
+                    <li style="display:inline; margin:0 5% 0 5%"><a href="<?php echo $this->baseUrl()?>/home/contactus" style="color:black; font-size:12px;">Contact us</a></li>
+                    <li style="display:inline; margin:0 5% 0 5%"><a href="<?php echo $this->baseUrl()?>/home/aboutus" style="color:black; font-size:12px;">About us</a></li>
+                    <li style="display:inline; margin:0 5% 0 5%"><a href="<?php echo $this->baseUrl()?>/stores/display" style="color:black; font-size:12px;">Where to buy</a></li>
+                    <li style="display:inline; margin:0 5% 0 5%"><a href="<?php echo $this->baseUrl()?>/home/sizechart" style="color:black; font-size:12px;">Size chart</a></li>
+                </ul>
+            </div>
+        </div>  
+    </div>
+</body>
+</html>

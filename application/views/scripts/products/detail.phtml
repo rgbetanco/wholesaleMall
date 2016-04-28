@@ -1,0 +1,76 @@
+<?php
+$this->layout()->setLayout('second_layout');
+
+$this->ckeditor = 'ckeditor'; //To tell the layout ckeditor must be loaded . 
+
+if(!$this->tab){
+    $default = "class='active'";
+    $active = "active";
+} else {
+    $default = "";
+    $active = "";
+}
+
+?>
+
+<style>
+    table {
+        clear: both;
+        border-collapse: collapse;
+    }
+    td {
+        padding: 10px;
+    }
+</style>
+
+<div class="tabbable" > <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs" id="myTab">
+        <li <?php if($this->tab == 'edit'){echo "class='active'";}else{echo $default;} ?>><a href="#edit" data-toggle="tab">Edit Product</a></li>
+        <li <?php if($this->tab == 'category'){echo "class='active'";} ?>><a href="#category" data-toggle="tab">Product's Categories</a></li>
+        <!-- <li <?php// if($this->tab == 'categoryadd'){echo "class='active'";} ?>><a href="#categoryadd" data-toggle="tab">Add Categories</a></li> -->
+        <li <?php if($this->tab == 'colorsize'){echo "class='active'";} ?>><a href="#colorsize" data-toggle="tab">Product's Color/Sizes</a></li>
+        <!-- <li <?php// if($this->tab == 'coloradd'){echo "class='active'";} ?>><a href="#coloradd" data-toggle="tab">Add Color/Size</a></li> -->
+        <li <?php if($this->tab == 'image'){echo "class='active'";} ?>><a href="#image" data-toggle="tab">Product's Images</a></li>
+        <li <?php if($this->tab == 'imageadd'){echo "class='active'";} ?>><a href="#imageadd" data-toggle="tab">Add Product's Images</a></li>
+    </ul>
+    <br/>
+    <div class="tab-content">
+
+        <!--Edit Product -->
+        <div class="tab-pane <?php if($this->tab == 'edit'){echo 'active';}else{echo $active;} ?>" id="edit">
+            <?php echo $this->action('edit','products',null, array('id'=>$this->id));?>
+        </div>
+        
+        <!--List categories -->
+        <div class="tab-pane <?php if($this->tab == 'category'){echo 'active';} ?>" id="category">
+            <?php echo $this->action('addform','procategories',null, array('id'=>$this->id));?>
+            <?php echo $this->action('index','procategories',null, array('id'=>$this->id));?>
+        </div>
+        
+        <!--Add categories -->
+       <!--  <div class="tab-pane <?php// if($this->tab == 'categoryadd'){echo 'active';} ?>" id="categoryadd">
+            <?php// echo $this->action('addform','procategories',null, array('id'=>$this->id));?>
+        </div> -->
+        
+        <!--List Color and Sizes -->
+        <div class="tab-pane <?php if($this->tab == 'colorsize'){echo 'active';} ?>" id="colorsize">
+            <?php echo $this->action('addform','procolorsizes',null, array('id'=>$this->id));?>
+            <?php echo $this->action('index','procolorsizes',null, array('id'=>$this->id));?>
+        </div>
+        
+        <!--Add Color and Sizes -->
+        <!-- <div class="tab-pane <?php// if($this->tab == 'coloradd'){echo 'active';} ?>" id="coloradd">
+            <?php// echo $this->action('addform','procolorsizes',null, array('id'=>$this->id));?>
+        </div> -->
+
+        <!--List images-->    
+        <div class="tab-pane <?php if($this->tab == 'image'){echo 'active';} ?>" id="image">
+            <?php  echo $this->action('index','proimages',null, array('id'=>$this->id, 'sort'=>$this->sort, 'tab'=>$this->tab));?>
+        </div>
+        
+        <!--Add images-->    
+        <div class="tab-pane <?php if($this->tab == 'imageadd'){echo 'active';} ?>" id="imageadd">
+            <?php echo $this->action('addform','proimages',null, array('id'=>$this->id));?>
+        </div>
+    </div>
+</div>

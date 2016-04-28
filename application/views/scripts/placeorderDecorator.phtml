@@ -1,0 +1,125 @@
+<style>
+    .labeltd {
+        padding-top: 0px;
+    }
+</style>
+            <div class="col-6" style="padding: 0 5px 0 0">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background-color: #fcabcb; color: white">Billing Information</div>
+                    <div class="panel-body">
+                        <table>
+                            <tr>
+                                <td class="labeltd">First Name<span style="color:red">*</span></td>
+                                <td colspan="3" width="70%"><?php echo $this->element->getElement('first_name'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Last Name<span style="color:red">*</span></td>
+                                <td colspan="3"><?php echo $this->element->getElement('last_name'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Company <span style="color:red">*</span></td>
+                                <td colspan="3"><?php echo $this->element->getElement('company'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Address<span style="color:red">*</span></td>
+                                <td colspan="3"><?php echo $this->element->getElement('b_address'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Address 2<span style="color:red"></span></td>
+                                <td colspan="3"><?php echo $this->element->getElement('b_address_2'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">City<span style="color:red">*</span></td>
+                                <td><?php echo $this->element->getElement('b_city'); ?></td>
+                                <td class="labeltd">State<span style="color:red">*</span></td>
+                                <td><?php echo $this->element->getElement('b_state'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Zip /Postal Code<span style="color:red"></span></td>
+                                <td colspan="3"><?php echo $this->element->getElement('b_zip'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Country<span style="color:red">*</span></td>
+                                <td><?php echo $this->element->getElement('b_country'); ?></td>
+                                <td class="labeltd">Other</td>
+                                <td><?php echo $this->element->getElement('b_other_country'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Phone<span style="color:red">*</span></td>
+                                <td colspan="3"><?php echo $this->element->getElement('b_phone'); ?></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" style="padding: 0 0 0 5px">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background-color: #fcabcb; color: white">Shipping Information</div>
+                    <div class="panel-body">
+                        <table>
+                            <tr>
+                                <td class="labeltd">Choose Location</td>
+                                <td colspan="3" width="70%"><?php echo $this->element->getElement('addresses'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">First Name<span style="color:red">*</span></td>
+                                <td colspan="3"><?php echo $this->element->getElement('s_first_name'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Last Name<span style="color:red">*</span></td>
+                                <td colspan="3" width="70%"><?php echo $this->element->getElement('s_last_name'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Company<span style="color:red">*</span></td>
+                                <td colspan="3" width="70%"><?php echo $this->element->getElement('s_company'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Address<span style="color:red">*</span></td>
+                                <td colspan="3"><?php echo $this->element->getElement('s_address'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Address 2<span style="color:red"></span></td>
+                                <td colspan="3"><?php echo $this->element->getElement('s_address_2'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">City<span style="color:red">*</span></td>
+                                <td><?php echo $this->element->getElement('s_city'); ?></td>
+                                <td class="labeltd">State<span style="color:red">*</span></td>
+                                <td><?php echo $this->element->getElement('s_state'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Zip /Postal Code<span style="color:red"></span></td>
+                                <td colspan="3"><?php echo $this->element->getElement('s_zip'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Country<span style="color:red">*</span></td>
+                                <td><?php echo $this->element->getElement('s_country'); ?></td>
+                                <td class="labeltd">Other</td>
+                                <td><?php echo $this->element->getElement('s_other_country') ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Phone</td>
+                                <td colspan="3"><?php echo $this->element->getElement('s_phone'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="labeltd">Method</td>
+                                <td colspan="3"><?php echo $this->element->getElement('s_method'); ?></td>
+                            </tr>
+                            <tr>
+                            <td colspan="4" width="100%"><?php echo $this->element->getElement('note'); ?></td>
+                        </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <table>
+                <!-- <tr>
+                    <td><?php// echo $this->element->getElement('captcha'); ?></td>
+                </tr> -->
+                <tr><td colspan="88" height="10px"></td></tr>
+                <tr>
+                    <td><?php echo $this->element->getElement('Submit'); ?><?php echo $this->element->getElement('Reset'); ?></td>
+                <tr><td colspan="88" height="10px"></td></tr>
+            </table>
+          
+<!--               <?php //echo $this->element->getElement('last_id'); ?>   -->  

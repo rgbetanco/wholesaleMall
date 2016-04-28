@@ -1,0 +1,1 @@
+[10-Sep-2015 05:22:36 America/Denver] PHP Fatal error:  Class 'Zend_View_Helper_Abstract' not found in /home1/nicafutb/public_html/nicaraodev/dogo/library/views/helpers/test.php on line 2

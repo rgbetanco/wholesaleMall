@@ -1,0 +1,65 @@
+<?php $this->layout()->setLayout('second_layout'); ?>
+<div class="col-md-6">
+<div class="panel panel-primary">
+    <div class="panel-heading">Search</div>
+    <div class="panel-body">
+<form action="<?php echo $this->baseUrl()?>/combos/display" method="post">
+    <table>
+        <tr>
+            <input type="hidden" name="tab" value="combolist" />
+            <input type="hidden" name="page" value="<?php echo $this->page?>" />
+            <td width="250"><input type="text" name="search" class="form-control" /></td>
+            <td><input type="submit" name="submit" value="Search" class="btn btn-default" /></td>
+        </tr>
+    </table>
+</form>
+<br>
+<a class="btn btn-primary" href="<?php echo $this->url(array('controller'=>'combos','action'=>'display','tab'=>'combolist','page'=>$this->page, 'search'=>'all')); ?>" >All</a>
+<a class="btn btn-primary" href="<?php echo $this->url(array('controller'=>'combos','action'=>'display','tab'=>'combolist','page'=>$this->page, 'search'=>'active')); ?>" >Active</a>
+<a class="btn btn-primary" href="<?php echo $this->url(array('controller'=>'combos','action'=>'display','tab'=>'combolist','page'=>$this->page, 'search'=>'disabled')); ?>" >Disabled</a>
+<br><br>
+    </div>
+</div>
+</div>
+<div class="col-md-12">
+<div class="panel panel-primary">
+    <div class="panel-heading">Combo List</div>
+    <div class="panel-body">
+<form action="<?php echo $this->url(array('controller'=>'combos','action'=>'update')); ?>" method="post" onsubmit="return confirm('Are you sure you want to submit this form?');">
+    <table width="100%">
+        <thead>
+            <tr>
+                <th><center><a href="<?php echo $this->baseUrl()?>/combos/display/tab/combolist/sort/name/page/<?php echo $this->page ?>">Combo Name</a></center></th>
+                <th><center>Product List</center></th>
+                <th><center><a href="<?php echo $this->baseUrl()?>/combos/display/tab/combolist/sort/price/page/<?php echo $this->page ?>">Combo Discount</a></center></th>
+                <th><center><a href="<?php echo $this->baseUrl()?>/combos/display/tab/combolist/sort/active/page/<?php echo $this->page ?>">Active</a></center></th>
+                <th><center><a href="<?php echo $this->baseUrl()?>/combos/display/tab/combolist/sort/sort/page/<?php echo $this->page ?>">Sort</a></center></th>
+                <th><center>Delete</center></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="13"><center><?php echo $this->paginationControl($this->combos, 'Elastic', 'pageControlCombos.phtml'); ?></center></td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <?php foreach ($this->combos as $c) { ?>
+                <tr>
+                    <input type="hidden" name="id[]" value="<?php echo $c->id ?>" />
+                    <td align='center'><input type='text' name="name[]" class="form-control" value="<?php echo $c->name; ?>" /></td>
+                    <td align='center'><?php echo $this->action('list', 'combodetail', null, array('combo_id' => $c->id)); ?></td>
+                    <td align='center' width="10%"><input type='text' name="price[]" class="form-control" value="<?php echo $c->price; ?>" /></td>
+                    <td align='center'><input type='checkbox' name="active[]" value="<?php echo $c->id; ?>" <?php if($c->active){echo 'checked';}?> /></td>
+                    <td align='center'><input type='text' name="order[]" class="form-control" value="<?php echo $c->sort; ?>" /></td>
+                    <td align='center'><input type="checkbox" name="delete[]" value="<?php echo $c->id ?>" ></td>
+                </tr>
+            <?php } ?>
+                <tr>
+                    <td colspan="6"><input type="submit" value="Submit" class="btn btn-primary" /></td>
+                </tr>
+        </tbody>
+    </table>
+</form>
+    </div>
+</div>
+</div>

@@ -1,0 +1,43 @@
+<?php
+$this->layout()->setLayout('second_layout');
+if (!$this->tab) {
+    $default = "class='active'";
+    $active = "active";
+} else {
+    $default = "";
+    $active = "";
+}
+?>
+
+<div class="tabbable" > <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs" id="myTab">
+        <li <?php if ($this->tab == 'basicSettings') {echo "class='active'";} else {echo $default;}?>><a href="#basicSettings" data-toggle="tab">Basic Settings</a></li>
+        <li <?php if ($this->tab == 'shippingMethods') {echo "class='active'";}?>><a href="#shippingMethods" data-toggle="tab">Shipping Methods</a></li>
+        <li <?php if ($this->tab == 'paymentMethods') {echo "class='active'";}?>><a href="#paymentMethods" data-toggle="tab">Payment Methods</a></li>
+    </ul>
+    <br>
+    <div class="tab-content">
+
+        <!--Basic Settings -->
+        <div class="tab-pane <?php if ($this->tab == 'basicSettings') {echo 'active';} else {echo $active;}?>" id="basicSettings">
+            <div class="col-sm-6">
+                <?php echo $this->action('index', 'basicsettings', null, array()); ?>
+            </div>
+        </div>
+
+        <!-- Shipping Methods -->
+        <div class="tab-pane <?php if ($this->tab == 'shippingMethods') {echo 'active';} ?>" id="shippingMethods">
+            <div class="col-sm-12">
+                <?php echo $this->action('index', 'shippingmethods', null, array()); ?>
+            </div>
+        </div>
+
+        <!-- payment Methods -->
+        <div class="tab-pane <?php if ($this->tab == 'paymentMethods') {echo 'active';}?>" id="paymentMethods">
+            <div class="col-sm-12">
+                <?php echo $this->action('index', 'paymentmethods', null, array()); ?>
+            </div>
+        </div>
+
+    </div>
+</div>

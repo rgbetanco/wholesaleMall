@@ -1,0 +1,40 @@
+<?php $this->layout()->setLayout('second_layout'); 
+
+if(!$this->tab){
+    $default = "class='active'";
+    $active = "active";
+} else {
+    $default = "";
+    $active = "";
+}
+
+?>
+
+<div class="tabbable" > <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs" id="myTab">
+        <li <?php if($this->tab == 'comboform'){echo "class='active'";}else{echo $default;} ?>><a href="#comboform" data-toggle="tab">Add New Combo</a></li>
+        <!-- <li <?php// if($this->tab == 'comboitem'){echo "class='active'";} ?>><a href="#comboitem" data-toggle="tab">Add Items to Combo</a></li> -->
+        <li <?php if($this->tab == 'combolist'){echo "class='active'";} ?>><a href="#combolist" data-toggle="tab">List of Combos</a></li>
+    </ul>
+    <br/>
+    <div class="tab-content">
+
+        <!--Add new Color -->
+        <div class="tab-pane <?php if($this->tab == 'comboform'){echo 'active';}else{echo $active;} ?>" id="comboform">
+            <div class="width_50">
+                <?php echo $this->action('form','combos',null, array());?>
+                <?php echo $this->action('add','combodetail',null, array('id'=>$this->comboid));?>
+            </div>
+        </div>
+        
+        <!--Add and List Combo detail-->
+        <!-- <div class="tab-pane <?php //if($this->tab == 'comboitem'){echo 'active';} ?>" id="comboitem">
+            <?php// echo $this->action('add','combodetail',null, array('id'=>$this->comboid));?>
+        </div> -->
+        
+        <!--List Colors-->
+        <div class="tab-pane <?php if($this->tab == 'combolist'){echo 'active';} ?>" id="combolist">
+            <?php echo $this->action('list','combos',null, array('page'=>$this->page, 'sort'=>$this->sort, 'search'=>$this->search));?>
+        </div>
+    </div>
+</div>

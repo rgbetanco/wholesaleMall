@@ -1,0 +1,61 @@
+<?php
+$this->layout()->setLayout('second_layout');
+?>
+<div class="panel panel-primary">
+<div class="panel-heading">List of Colors and Sizes for this Product</div>
+<div class="panel-body">
+<?php
+if (sizeof($this->data) > 0) {
+    ?>
+    <form action="<?php echo $this->baseUrl() . '/procolorsizes/delete'; ?>" method="post" onsubmit="return confirm('Are you sure you want to submit this form?');">
+        <table style="width: 100%">
+            <thead>
+                <tr>
+                    <th><center>Color</center></th>
+                    <th><center>Size</center></th>
+                    <th><center>Sub_id</center></th>
+                    <th><center>Volusion Id</center></th>
+                    <th><center>Retail Price</center></th>
+                    <th><center>Wholesale Price</center></th>
+                    <th><center>On Sale Price</center></th>
+                    <th><center>Inventory</center></th>
+                    <th><center>Delete</center></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="8"><center><?php echo $this->paginationControl($this->data, 'Elastic', 'pagecontrol.phtml'); ?></center></td>
+            </tr>
+            </tfoot>
+            <tbody>
+                <?php
+                foreach ($this->data as $d) {
+                    ?>
+                    <tr>
+                <input type="hidden" name="id[]" value="<?php echo $d->id; ?>" />
+                <td><?php echo $this->formSelect('colors[]', $d->c_id, array('size' => 1, 'class' => 'form-control', 'multiple' => false), $this->colors); ?></td>
+                <td><?php echo $this->formSelect('sizes[]', $d->s_id, array('size' => 1, 'class' => 'form-control', 'multiple' => false), $this->sizes); ?></td>
+                <td align="center"><?php echo $this->formText('sub_id[]', $d->sub_id, array('size' => 8, 'class' => 'form-control')); ?></td>
+                <td align="center"><?php echo $this->formText('v_id[]', $d->v_id, array('size' => 8, 'class' => 'form-control')); ?></td>
+                <td align="center"><?php echo $this->formText('r_price[]', $d->r_price, array('size' => 8, 'class' => 'form-control')); ?></td>
+                <td align="center"><?php echo $this->formText('w_price[]', $d->w_price, array('size' => 8, 'class' => 'form-control')); ?></td>
+                <td align="center"><?php echo $this->formText('o_price[]', $d->o_price, array('size' => 8, 'class' => 'form-control')); ?></td>
+                <td align="center"><?php echo $this->formText('inventory[]', $d->inventory, array('size' => 8, 'class' => 'form-control')); ?></td>
+                <td align="center"><?php echo $this->formCheckbox('delete[]', $d->id, array('checked' => FALSE)); ?></td>
+                </tr>
+                <?php
+            }
+            ?>
+            <tr>
+                <td colspan="8"><?php echo $this->formSubmit('submit', 'Submit', array('class' => 'btn btn-primary')) ?></td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="hidden" name="pro_id" value="<?php echo $this->id; ?>" />
+        <input type="hidden" name="page" value="<?php echo $this->page; ?>" />
+    </form>
+    <?php
+}
+?>
+</div>
+</div>

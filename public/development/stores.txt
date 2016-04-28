@@ -1,0 +1,175 @@
+9;Bau Per Miao;Via Solferino 25;;Milano;;20121;Italy;39 02 6597643;
+16;For The Love Of The Breed;4018 Main Street;;Brewster;MA;02631;USA;(508) 255-7866;
+17;Park Avenue Puppys;112 Spruce Street;;Providence;RI;02903;USA;(401) 751-1800;
+23;Paradise Pet Inc;42 W. Passaic Avenue;;Bloomfield;NJ;07003;USA;(973) 338-0795;
+24;Woofy Pet;982 River Rd;;Edgewater;NJ;07020;USA;(201) 969-1500;
+28;Best of Breed LLC;13 Jay Street;;Tenafly;NJ;07670;USA;(201) 567-3647;www.bestofbreedpetsalon.com
+32;Animal House;705 Asbury Ave;;Ocean City;NJ;08226;USA;(609) 398-3771;www.ocanimalhouse.com
+34;Paws;2175 Highway 35;;Sea Girt;NJ;08750;USA;(732) 449-5000;
+36;Trixie & Peanut;23 East 20th Street;;New York;NY;10003;USA;(212) 358-0881;www.trixieandpeanut.com
+38;Downtown Dog House;259 West 18th st.;;New York;NY;10011;USA;(212) 924-5300;
+40;Happy Paws;316 Lafayette St;;New York;NY;10012;USA;(212) 431-6898;www.happypawsinc.com
+41;CitiPups - NYC Village;45 Christopher Street;;New York;NY;10014;USA;212-352-8777;www.citipups.com
+42;Zoomies;434 Hudson St;;New York;NY;10014;USA;(212) 462-4480;www.zoomiesnyc.com
+46;PETS-on-LEX;1109 Lexington Avenue;;New York;NY;10021;USA;(212) 426-0766;www.petsonlex.com
+47;Reme's Oggi Pets;989 1st Ave. 54th St.;;New York;NY;10022;USA;(212) 838-2250;
+49;Posh Paws of Manhattan;2121 Fredrick Douglas Blvd.;;New York;NY;10026;USA;(212) 662-7674;
+50;Pets NYC;594 Ninth Avenue;;New York;NY;10036;USA;(212) 757-2924;
+52;The Beggin Dog Bakery;4354 Amboy Road;;Staten Island;NY;10312;USA;(718) 967-7747;
+56;Spock and Elivs;27 Middle Neck Rd;;Great Neck;NY;11021;USA;(516) 466-3701;www.happytailsny.net
+59;Kiki's Pet Spa;239 Dekalb Avenue;;Brooklyn;NY;11205;USA;(718) 857-7272;
+61;Tiny Tails;1402 86th Street;;Brooklyn;NY;11228;USA;(718) 234-1034;
+64;Village Pet Spa;6072 72nd St;;Maspeth;NY;11378;USA;(718) 779-5990;
+75;Fairmount Pet Shoppe;2024 Fairmount Ave.;;Philadelphia;PA;19130;USA;(215) 236-6080;
+82;Burlane Cat & Dog Boutique;108 N Tollgate Rd;;Bel Air;MD;21014;USA;(410) 879-1459;www.burlanecat-dog.com
+84;For The Love of Pete;322 Libbie Ave;;Richmond;VA;23226;USA;(804) 288-3674;
+85;Pet Persona Inc.;308 Main Street;;Smithfield;VA;23430;USA;(757) 356-9006;
+103;Baldwin Bark and Meow;4836 New Broad Street;;Orlando;FL;32814;USA;(407) 893-6868;www.baldwinbark.com
+105;Freida's Kritter Boutique;116 Harrison St.;;Cocoa;FL;32922;USA;(321) 637-1008;
+106;Pets are People Too;8991 Taff St.;;Pembroke Pines;FL;33024;USA;(954) 436-2110;www.petsarepeopletooboutique.com
+107;Dog Bar;723 N Lincoln Lane;;Miami Beach;FL;33139;USA;(305) 532-5654;www.dogbar.com
+114;Bark-tique;153 S.E. 1st Avenue;;Boca Raton;FL;33432;USA;(561) 395-2275;Bark-tique.com
+121;Goodness for Pets;619 8th Street South;;Naples;FL;34102;USA;(239) 262-1627;
+128;Nixie's Pet Boutique;1007 Main Street;;Gardendale;AL;35071;USA;205-988-8600;www.nixiespetboutique.com
+132;Miss Kitty's Bed & Bath;4308 Kenilwood Dr;;Nashville;TN;37204;USA;(615) 292-1900;
+134;Four Paws & A Tail Pet Bakery;8126 East Brainerd Rd.;;Chattanooga;TN;37421;USA;(423) 893-0261;
+140;The Grateful Dog Bakery;31966 Center Ridge Rd.;;N. Ridgeville;OH;44039;USA;(440) 353-1990;
+142;Pawsitively Pure Ltd.;203 East Royalton Road;STE 109;Broadview Heights;OH;44147;USA;(440) 717-1145;
+143;Hyde Bark Fashions;2727 Erie Ave.;;Cincinnati;OH;45208;USA;(513) 533-0800;
+157;Two Bostons;232 S Washington St.;;Naperville;IL;60540;USA;(630) 357-7621;
+166;Wags & Whiskers;1409 Vine St;;Hays;KS;67601;USA;(785) 623-4525;
+167;Spoiled Pet Spa & Boutique;2837 Johnston St;;Lafayette;LA;70503;USA;(337) 233-8085;
+171;Woof;2411 Coit Rd;Ste 140;Plano;TX;75075;USA;(972) 964-5164;www.hearth-n-hound.com
+177;Fifi & Fidos Pet Boutique;555 E. Basse Rd.;;San Antonio;TX;78209;USA;(210) 822-2525;www.fifiandfidos.com 
+181;Diva Dogs, LLC;20235 N. Cave Creek Rd;STE 102;Phoenix;AZ;85024;USA;(602)788-1576;www.divadogsaz.com
+186;Chateau Marmutt;8128 West 3rd Street;;Los Angeles;CA;90048;USA;(323) 653-2062;www.chateaumarmutt.com
+189;Maxwell Dog;12332 Ventura Blvd;;Studio City;CA;91604;USA;(818) 505-8411;www.maxwelldog.com
+208;Best in Show;300 Sanchez St.;;San Francisco;CA;94114;USA;(415) 863-7387;bestinshowsf.com
+209;Catnip+Bones;2220 Chestnut Street;;San Francisco;CA;94123;USA;(415) 359-9100;
+216;Three Dog Bakery;526 Broadway;;Sonoma;CA;95476;USA;(707) 933-9780;www.threedog.com
+223;Furever Pets LLC;1902 NE Broadway Street;;Portland;OR;97232;USA;(503) 282-4225;
+229;Barking Babies;1188 Homer St.;;Vancouver;BC;V6B 2X6;Canada;(604)647-2275;www.barkingbabies.com
+235;Poochey Couture Inc.;2344 Lucerne;;Montreal;QC;H3R 2J8;Canada;(514) 233-5999;www.poocheycouture.com
+236;Golly Gear;7243 St Louis Ave.;;Skokie;IL;60076;USA;(800) 694-6531;www.gollygear.com
+239;Muttropolis;7755 Girard Avenue;;La Jolla;CA;92037;USA;(858) 459-WOOF;www.muttropolis.com 
+240;Muttropolis;865 Newport Center Drive;;Newport Beach;CA;92660;USA;949-717-MUTT;
+241;Muttropolis;227 South Cedros;;Solana Beach;CA;92075;USA;(858) 755-DOGS;www.muttropolis.com 
+246;The Doggy Store;917 N. Federal Highway;;Ft. Lauderdale;FL;33304;USA;(954) 828-9229;www.thedoggystore.com
+248;Zen Dog Pet Boutique;1550 Platte St.;Unit C. ;Denver;CO;80202;USA;(303) 744-7067;www.zendogpetboutique.com
+251;Wylie Wagg for Pets;5B East Washington St.;;Middleburg;VA;20117;USA;(540) 687-8727;www.wyliewagg.com
+252;Wylie Wagg for Pets;11889 Grand Commons Ave.;;Fairfax;VA;22030;USA;(703) 830-5454;www.wyliewagg.com
+254;Cucciolo Pet Living and Styling;MT9 4820 Kingsway;;Burnaby;BC;;Canada;(604) 726-3455;
+259;The Pet Corner;2324 Loiza St.;;San Juan ;PR;00913;Puerto Rico;(787) 450-4201;
+262;Bark & Meow;9A South Broadway;;Tarrytown;NY;10591;USA;(914) 524-7373;
+263;Walker's Healthy Pet;1515-C Freeway Drive;;Mt. Vernon;WA;98273;USA;(360) 424-6200;
+265;Barks;Horacio 1820-11 Col. Polanco;;Mexico City;;11510;Mexico;55-52-80-65-71;
+266;Lucky Dog Outfitters;3411 6th Ave.;;Tacoma;WA;98406;USA;(253) 274-9663;
+268;The Dog Company;5135 West Alabama;;Houston;TX;77056;USA;(713) 621-3647;
+269;Design for Dinky Dogs;1739 Waterstone Blvd;;Miamisburg;OH;45342;USA;(937) 304-5717;
+271;Polished Pups;19239 Stone Oak Pkwy;STE 114;San Antonio;TX;78258;USA;(210) 347.0408;www.polishedpups.com
+273;Trendy Tails;4212 S. Alameda;;Corpus Christi;TX;78412;USA;(361) 906-1190;
+274;Pet Mystique;1131 E. 42nd Street;;Odessa;TX;79761;USA;(432) 335-0325;
+275;Tails in the City;1 E Delaware;;Chicago;IL;60611;USA;(312) 649-0347;
+276;The New York Dog Shop;46 West 73rd Street;;New York;NY;10023;USA;(212) 595-2422;
+277;Pup Hollywood;3479 Richmond Rd;;Staten Island;NY;10306;USA;(718) 979-9274;
+279;Barker and Meowsky;1003 W Armitage Ave.;;Chicago;IL;60614;USA;(773) 868-0200;www.barkerandmeowsky.com
+280;Pouchi Couture;400 Hana Hwy Unit I;;Kahului;HI;96732;USA;(808) 893-BARK;
+282;Molly's Pet Boutique;71 York Road;;Dun Laoghaire;Dublin;;Ireland;353-1-2805999 ;www.mollys.ie
+283;Fetch Doggy Boutique;301 East Main Street;;Port Jefferson;NY;11777;USA;631-331-0965;www.fetchdoggies.com
+285;Must Love Dogs Boutique & Spa;211 Washington Ave;;Grand Haven;MI;49417;USA;(646) 638-3286;
+286;Animal House;157 Fillmore Street;;San Francisco;CA;94117;USA;(415) 552-0233;
+288;Doggy Doggy;249-15 Northern Blvd;;Little Neck;NY;11362;USA;(718) 428-0717;
+289;Ritzy Canine;148 E. 40th Street;;New York;NY;10016;USA;(212) 949-1818;
+290;Penelope's Pet Boutique;99 Washington St.;;Salem;MA;01970;USA;(978) 745-0566;
+292;Happy Go Lucky Dog ;Valley Fair Westfield Shopping Center;2855 Stevens Creek Blvd., Ste.1125;Santa Clara;CA;95050;USA;(408) 244-2472;www.happygoluckydogs.com
+293;Birkin & Bailey's;21 Baldwin Avenue;;Paia;HI;96779;USA;(808) 579-9805 ;
+294;The Diamond Collar;7523 13th Ave.;;Brooklyn;NY;11228;USA;(718) 232-7387;www.thediamondcollar.com
+295;D.O.G.;346 N La Cienega Blvd;;Los Angeles;CA;90048;USA;(310) 424-5807;
+296;Land of Paws;4021 Somerset;;Prairie Village;KS;66208;USA;(913) 341-3992;
+297;Land of Paws;4155 N. Mulberry Drive;Suite A;Kansas City;MO;64116;USA;(816) 587-2275;
+298;Land of Paws;6772 W. 135th Street;;Overland Park;KS;66223;USA;(913) 402-1033;
+299;Dog Bone Alley;1342 Park Street;;Alameda;CA;94501;USA;(510) 521-5800;
+302;The Pet Stops Here;10129 Main Street;Suite 107A;Bellevue;WA;98004;USA;(425) 637-0188;
+303;Valley Pet;10218 Mason Avenue;;Chatsworth;CA;91311;USA;(818) 349-5520;
+304;The Dog House;405 Robert Parker Coffin Rd;;Long Grove;IL;60047;USA;(847) 634-3060;
+305;Gussied Up Dog Boutique;1310 Lincoln Avenue;;San Jose;CA;95125;USA;(408) 279-2229;www.gussiedupdog.com
+306;Chew On This Dog Barkery;21 S Ash St.;;Frankfort;IL;60423;USA;(815) 806-8081;
+307;Paw Palace;19 West Front St;;Red Bank;NJ;07701;USA;(732) 747-9744;
+309;Snooty Pets;8560 W. Desert Inn Rd;STE 4;Las Vegas;NV;89117;USA;(702) 396-5510;
+311;The Barkery;63 Bridgeport Road;;Newport Coast;CA;92657;USA;(949) 675-0364;
+312;Molly & Max;4274 Cahaba Heights Court;;Birmingham;AL;35243;USA;(205) 977-5999;
+314;Natural Pawz;15890 Southwest Freeway;;Sugar Land;TX;77478;USA;(281) 313-7299;
+315;Natural Pawz;24732 Kuykendahl;;Tomball;TX;77375;USA;(281) 255-8883;
+317;Health Mutts;1170 E. Champlain Dr.;#101;Fresno;CA;93720;USA;(559) 433-6979;www.healthmutts.com
+318;Dog Dog Cat;4000 Lake Tahoe Blvd;Suite C-17;South Lake Tahoe;CA;96150;USA;(530) 541-2322;www.dogdogcat.com
+319;The Haute Hound;287 E Indiantown Rd, Suite B-6;;Jupiter;FL;33477;USA;(561) 575-4266;www.thehautehound.com
+321;Scartch N Sniff;120 N Marion;;Oak Park;IL;60304;USA;(708) 725-3043;
+322;Purrsnickety;100 N. Santa Cruz Avenue;;Los Gatos;CA;95030;USA;(408) 395-2287;
+323;Wags & Whiskers Pet Boutique;4211 Park Blvd;;Oakland;CA;94602 ;USA;(510) 482-6047;
+324;Wags & Whiskers Pet Boutique;1528 Locust Street;;Walnut Creek;CA;94596 ;USA;(925) 935-2275;
+325;Wags and Whiskers;10700 Corrales Road NW;;Albuquerque;NM;87114;USA;(505) 898-8626;
+326;Lulu & Luigi ;3844 Grand Way;;St. Louis Park;MN;55416;USA;(952) 929-1200;www.luluandluigi.com
+327;Lulu & Luigi;Wayzata Village Shoppes ;812 East Lake Street;Wayzata;MN;55391;USA;(952) 249-0330 ;www.luluandluigi.com
+328;Beverly Hills Mutt Club;9873 Santa Monica Blvd;;Beverly Hills;CA;90212;USA;(310) 284-8777;
+329;PS9 Pets;169 N. 9th Street;;Brooklyn;NY;11211;USA;(718) 486-6465;www.ps9pets.com
+331;Eastside Dog;7533 166th Ave. NE;;Redmond;WA;98052;USA;(425) 497-9487;
+336;Pampered Paws Boutique;3019 Woodland Hills Drive;;Kingwood;TX;77339;USA;(281) 359-7297  ;
+339;Bluegrass Barkery;113 Clay Ave.;;Lexington;KY;40502;USA;859-233-3647;www.bluegrassbarkery.com
+341;Dog-a-holics;3608 N. Southport;;Chicago;IL;60613;USA;312-371-7827;www.dog-a-holics.com
+344;Tailwaggers;1929 N. Bronson Avenue;;Hollywood;CA;90068;USA;323-464-9600;
+345;Mario's World;501 Broderick Street;;San Francisco;CA;94117;USA;415-346-3067;
+346;K9 Doggie Bakery & Boutique;Hanes Mall;3320 Silas Creek Pkwy, Unit BL;Winston-Salem;NC;27103;USA;336-760-2886;
+347;Pet Outfitters;5942 So Holly Street;;Greenwood Village;CO;80111;USA;303-290-0430;
+350;Cutie Pie Pets;150 S. Denton Tap Road;#115;Coppell;TX;75019;USA;972-745-7387;
+351;Doggie Styles;9467 Charleville Blvd.;;Beverly Hills;CA;90212;USA;310-278-0031;www.doggiestylesonline.com
+353;Soggy Paws;1148 W Leland Avenue;;Chicago;IL;60640;USA;773-334-7663;
+354;The Modern Dog;1611 Abbot Kinney Blvd.;;Venice;CA;90291;USA;310-450-2275;
+355;Downtown Dogs;1631 West Snow Circle;;Tampa;FL;33606;USA;813-250-3647;
+357;Barks & Bones Boutique;2638 W Dawnview Dr;Suite D;Rialto;CA;92377;USA;909-854-6211;
+358;CoCo & ToTo;444 West 51st Street;;New York;NY;10019;USA;212-956-5822;
+359;Lexidog Boutique;416 NW 10th Ave;;Portland;OR;97209;USA;503-243-6200;www.lexidog.com
+365;Plaza De Paws;1429 Burlingame Ave;;Burlingame;CA;94010;USA;650-579-3647;
+366;Pawtique;12206 Copper Way;#136;Charlotte;NC;28277;USA;704-544-7551;
+369;Little Paws;19 E Main Street;;Palmyra;PA;17078;USA;717-886-6741;
+370;Inman Park Pet Works;914 Austin Avenue;Suite A;Atlanta;GA;30307;USA;770-845-8355;
+371;The Animal Connection;2419 Chestnut Street;;San Francisco;CA;94123;USA;415-567-5335;
+372;Napier's Kennel Shop;33967 Woodward Avenue;;Birmingham;MI;48009;USA;248-644-0655;
+373;Paws & Pose;88 Ocean Avenue;;Long Branch;NJ;07740;USA;(732) 222-8033;
+376;Parker's Pets;1342 E 55th Street;;Chicago;IL;60615;USA;773-497-4323;
+378;See Spot Shop;32531 N. Scottsdale Road;Suite 111;Scottsdale;AZ;85262;USA;480-595-5116;
+379;Woof Dog Boutique;Atwater Village;3172 Glendale Blvd;Los Angeles;CA;90039;USA;323-661-7722;
+380;Great Dog Daycare;11333 Roosevelt Way NE;;Seattle;WA;98125;USA;206-526-1101;
+381;Pawz Palm Springs;515 N. Palm Canyon Drive BLG D;;Palm Springs;CA;92262;USA;760-641-9545;
+382;Paws 4 Fun Pet Boutique;1022 W Broadway;;Ardmore;OK;73401;USA;580-223-7297;
+385;Troy's Trims & Treats;85 West Englewood Ave.;;Englewood;NJ;07631;USA;201-871-8484;www.troystrimsandtreats.com
+386;Lucca Bella;2512 Oak Lawn Ave;;Dallas;TX;75219;USA;214-559-0855;www.luccabella.com
+390;Two Bostons;2523 West 75th St.;;Naperville;IL;60540;USA;630-305-0150;
+391;Five Star Fido;23501 Ridge Route Drive, Ste E;;Laguna Hills;CA;92653;USA;886-512-2740;www.FiveStarFido.com 
+393;Spoiled Sweet Pets;123 Creek Road;;Mt. Laurel ;NJ;08054;USA;856-206-9091;www.spoiledsweetpets.com
+394;Raising Rover;1428 Lexington Avenue;;New York;NY;10128;USA;212-987-7683;www.raisingroverltd.com
+396;K9 Loft;2170 Sunset Blvd.;;Los Angeles;CA;90026;USA;(213) 484-6006;
+397;K9 Loft;14257 Ventura Blvd;;Sherman Oaks;CA;91423;USA;(818) 484-6006;
+398;Wylie Wagg for Pets;7505 Leesburg Pike STE 120A;;Falls Church;VA;22043;USA;;
+399;Cody & Carl's Blvd;756 W Northwest Hwy 4D;;Barrington;IL;60010;USA;847-304-7140;
+400;You Lucky Dog;932 Washington St;;Hoboken;NJ;07030;USA;201-653-4004;
+401;Sugarbear's Pampered Pet Boutique;745 Easy Joyce Blvd;#109;Fayetteville;AR;72703;USA;877-285-8909;www.sugarbearspamperedpets.com
+402;Lofty Dog;403 West 2nd St;;Austin;TX;78701;USA;512-476-5050;www.austinloftydog.com
+403;Orange Bone;7574 Melrose Avenue;;Los Angeles;CA;90046;USA;323-852-1258;www.orangebone.com
+404;Fetch Club;85 South St;;New York ;NY;10038;USA;212-401-8199;www.fetchclub.com
+405;Bow Wow Beauty Shoppe;1735 University Ave;;San Diego;CA;92103;USA;619-692-0962;www.bowwowbeautyshoppe.com
+406;Baxterboo.com;Online Only;;Centennial;CO;80112;USA;888-887-0063;www.baxterboo.com
+407;Poochalicious.com;Online Only;;Burnaby;BC;V5B4S8;Canada;855-557-6624;www.poochalicious.com
+409;Farfel's Farm;906 Pearl St;;Boulder;CO;80302;USA;800-806-6994;www.farfels.com
+410;Hot Hund;Strandvejen 134;;Hellerup;;DK-2900;Denmark ;45-3962-6271;www.hothund.dk
+411;Four Paws Pet Boutique;52 Court St. ;;Plymouth ;MA;02360;USA;(508) 747-7297;www.fourpawspetboutique.com
+412;Ciao Bow Wow;1109 Osgood St;;North Andover;MA;01845;USA;(978) 975-3647;
+413;Happy Dogs;234 N 12th St;;Brooklyn;NY;11211;USA;718-388-7091;
+414;Le Chien ;Krakvagen 15;;Tyreso;;13568;Sweden;46-8-410-27889 ;www.lechien.se
+415;Canine Comforts;308 Jackson St Ste 2;;Oakland;CA;94607;USA;510-238-8717;www.k9comfortsoakland.com
+416;Doggie Delight;1432 South Broadway;;Denver;CO;80210;USA;303-777-5076;
+417;Willow & Moo;;;Gold Coast;Queensland;4226;Australia;0449-176-810;www.willowandmoo.com.au
+418;Coco & Pud;;;Chatswood;NSW;2069;Australia;02-9417-0099;www.cocoandpud.com.au
+419;Urban Pooch Canine Life Center;4501 N Ravenswood Avenue;;Chicago;IL ;60640;USA;www.urbanpooch.com;773-942-6550
+420;CitiPups - NYC Chelsea;147 Eight Ave;;New York;NY;10011;USA;212-243-8777;www.citipups.com
+421;Uptown Pet Bistro and Boutique;4417 Market Common Dr;;Fairfax;VA;22033;USA;703-727-8767;
+422;Puppy & Prince;Giesbethweg 27 ;;Erlangen;;91056;Germany;49-9135-210838;www.puppyundprince.de

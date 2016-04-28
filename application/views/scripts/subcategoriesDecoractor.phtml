@@ -1,0 +1,24 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">Add New Sub-Category Form</div>
+    <div class="panel-body">
+        <form enctype="application/x-www-form-urlencoded" role="form" class="form-horizontal" action="<?php echo $this->element->getAction(); ?>" method="post" >
+            <table style="clear:both" border="0" cellpadding="5" padding="10" width='100%'>
+                <tr>
+                    <td>Category</td>
+                    <td><?php echo $this->element->getElement('categories'); ?></td>
+                </tr>
+                <tr>
+                    <td>Sub-Category</td>
+                    <td><?php echo $this->element->getElement('subcategory'); ?></td>
+                </tr>
+                <tr>
+                    <td>Sort</td>
+                    <td><?php echo $this->element->getElement('sort'); ?></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><?php echo $this->element->getElement('submit'); ?><?php echo $this->element->getElement('reset'); ?></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>

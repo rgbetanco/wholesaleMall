@@ -1,0 +1,76 @@
+<?php
+$this->layout()->setLayout('second_layout');
+
+$this->ckeditor = 'ckeditor'; //To tell the layout ckeditor must be loaded . 
+
+if(!$this->tab){
+    $default = "class='active'";
+    $active = "active";
+} else {
+    $default = "";
+    $active = "";
+}
+
+?>
+
+<style>
+    table {
+        clear: both;
+        border-collapse: collapse;
+    }
+    td {
+        padding: 10px;
+    }
+</style>
+
+<div class="tabbable" > <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs" id="myTab">
+        <li <?php if($this->tab == 'edit'){echo "class='active'";}else{echo $default;} ?>><a href="#edit" data-toggle="tab">Edit Customer Form</a></li>
+        <li <?php if($this->tab == 'shipadd'){echo "class='active'";} ?>><a href="#shippingadd" data-toggle="tab">Add New Shipping Addresses</a></li>
+        <li <?php if($this->tab == 'ship'){echo "class='active'";} ?>><a href="#shipping" data-toggle="tab">Shipping Addresses</a></li>
+        <li <?php if($this->tab == 'ddadd'){echo "class='active'";} ?>><a href="#ddollarsadd" data-toggle="tab">Add New Dogo Dollar</a></li>
+        <li <?php if($this->tab == 'dd'){echo "class='active'";} ?>><a href="#ddollars" data-toggle="tab">Dogo Dollars</a></li>
+        <li <?php if($this->tab == 'message'){echo "class='active'";} ?>><a href="#message" data-toggle="tab">Send Mail</a></li>
+        <li <?php if($this->tab == 'password'){echo "class='active'";} ?>><a href="#password" data-toggle="tab">Change Password</a></li>
+    </ul>
+    <br/>
+    <div class="tab-content">
+        
+        <!--Edit customer-->
+        <div class="tab-pane <?php if($this->tab == 'edit'){echo 'active';}else{echo $active;} ?>" id="edit">
+            <?php echo $this->action('editregister','register',null, array('id'=>$this->reg_id));?>
+        </div>
+        
+        <!--New Shipping Addresses-->
+        <div class="tab-pane <?php if($this->tab == 'shipadd'){echo 'active';} ?>" id="shippingadd">
+            <?php echo $this->action('index','shipping',null, array('reg_id'=>$this->reg_id));?>
+        </div>
+        
+        <!--List Shipping Addresses-->
+        <div class="tab-pane <?php if($this->tab == 'ship'){echo 'active';} ?>" id="shipping">
+            <?php echo $this->action('list','shipping',null, array('reg_id'=>$this->reg_id,'pages'=>$this->pages));?>
+        </div>
+        
+        <!--Add Dogo dollars-->    
+        <div class="tab-pane <?php if($this->tab == 'ddadd'){echo 'active';} ?>" id="ddollarsadd">
+            <?php echo $this->action('add','ddollars',null, array('id'=>$this->reg_id));?>
+        </div>
+        
+         <!--List Dogo dollars-->    
+        <div class="tab-pane <?php if($this->tab == 'dd'){echo 'active';} ?>" id="ddollars">
+            <?php echo $this->action('list','ddollars',null, array('reg_id'=>$this->reg_id,'paged'=>$this->paged));?>
+        </div>
+
+        <!--Send email to customer-->
+        <div class="tab-pane <?php if($this->tab == 'message'){echo 'active';} ?>" id="message">
+            <?php echo $this->action('sendmail','register',null, array('reg_id'=>$this->reg_id));?>
+        </div>
+
+        <!--Change customer password-->
+        <div class="tab-pane <?php if($this->tab == 'password'){echo 'active';} ?>" id="password">
+            <?php echo $this->action('changepassword','register',null, array('reg_id'=>$this->reg_id,'success'=>$this->success));?>
+        </div>
+    </div>
+</div>
+
+<?php echo $this->setupEditor( 'description' );

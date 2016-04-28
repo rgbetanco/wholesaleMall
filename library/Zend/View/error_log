@@ -1,0 +1,2 @@
+[10-Sep-2015 05:23:05 America/Denver] PHP Warning:  require_once(Zend/Loader.php): failed to open stream: No such file or directory in /home1/nicafutb/public_html/nicaraodev/dogo/library/Zend/View/Abstract.php on line 23
+[10-Sep-2015 05:23:05 America/Denver] PHP Fatal error:  require_once(): Failed opening required 'Zend/Loader.php' (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home1/nicafutb/public_html/nicaraodev/dogo/library/Zend/View/Abstract.php on line 23

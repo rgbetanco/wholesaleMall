@@ -1,0 +1,270 @@
+<script>
+
+    $(document).ready(function(){
+        updateAttributes();
+    });
+
+    function updateAttributes(){
+        if ($('#b_other_country').val() != '') {
+            $('#b_country').val('Other');
+            $('#b_other_country').removeAttr('disabled');
+            $('#b_state').attr('disabled','disabled');
+        };
+        //the if statement is not working, need to fix this bug
+        if($('#s_country').val() == 'Other'){
+            $('#s_state').attr('disabled','disabled');
+            $('#s_other_country').removeAttr('disabled');
+        } else {
+            $('#s_state').removeAttr('disabled');
+            $('#s_other_country').attr('disabled','disabled');
+        }
+    }
+
+    function updateCart(qty,counter){
+        pro_id = $('.'+counter);
+    
+         if(qty.value !== "" && qty.value > 0){
+                $.post('<?php echo $this->baseUrl()?>/shopping/update',{'pro_id':pro_id.val(),'qty':qty.value},function(response){
+                 location.reload();
+                });
+        } else {
+            alert('Value no allowed');
+            location.reload();
+        }
+        
+    }
+    function deleteItem(counter){
+        pro_id = $('.'+counter);
+
+        if(pro_id.val() !== ""){
+                $.post('<?php echo $this->baseUrl()?>/shopping/delete',{'id':pro_id.val()},function(response){
+                 location.reload();
+                });
+            }
+    
+    }
+    
+    function stopRKey(evt) { 
+        var evt = (evt) ? evt : ((event) ? event : null); 
+        var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
+        if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
+    }
+
+    function updateShippingAddress(that){
+        if (that.value > 2) {
+            $('#s_first_name').removeAttr('disabled');
+            $('#s_last_name').removeAttr('disabled');
+            $('#s_company').removeAttr('disabled');
+            $('#s_address').removeAttr('disabled');
+            $('#s_address_2').removeAttr('disabled');
+            $('#s_city').removeAttr('disabled');
+            $('#s_state').removeAttr('disabled');
+            $('#s_zip').removeAttr('disabled');
+            $('#s_country').removeAttr('disabled');
+            $('#s_other_country').removeAttr('disabled');
+            $('#s_phone').removeAttr('disabled');
+
+            $.post('<?php echo $this->baseUrl();?>/orders/getshippingaddress',{id:that.value}, 
+                function(response){
+                    $('#s_first_name').val(response['first_name']);
+                    $('#s_last_name').val(response['last_name']);
+                    $('#s_company').val(response['company']);
+                    $('#s_address').val(response['address']);
+                    $('#s_address_2').val(response['address_2']);
+                    $('#s_city').val(response['city']);
+                    $('#s_state').val(response['state']);
+                    $('#s_zip').val(response['zip']);
+                    if (response['country'] != 'United States') {
+                        $('#s_country').val('Other');
+                        $('#s_other_country').val(response['country']);
+                    } else {
+                        $('#s_country').val('United States');
+                    }
+                    
+                    $('#s_phone').val(response['phone']);
+                }).done (function(data){
+                    updateAttributes();
+                });
+        }
+        if (that.value == 2) {
+            $('#s_first_name').val($('#first_name').val());
+            $('#s_first_name').attr('disabled', 'disabled');
+
+
+            $('#s_last_name').val($('#last_name').val());
+            $('#s_last_name').attr('disabled', 'disabled');
+
+            $('#s_company').val($('#company').val());
+            $('#s_company').attr('disabled', 'disabled');
+
+            $('#s_address').val($('#b_address').val());
+            $('#s_address').attr('disabled', 'disabled');
+
+            $('#s_address_2').val($('#b_address_2').val());
+            $('#s_address_2').attr('disabled', 'disabled');
+
+            $('#s_city').val($('#b_city').val());
+            $('#s_city').attr('disabled', 'disabled');
+
+            $('#s_state').val($('#b_state').val());
+            $('#s_state').attr('disabled', 'disabled');
+
+            $('#s_zip').val($('#b_zip').val());
+            $('#s_zip').attr('disabled', 'disabled');
+
+            $('#s_country').val($('#b_country').val());
+            $('#s_country').attr('disabled', 'disabled');
+
+            $('#s_other_country').val($('#b_other_country').val());
+            $('#s_other_country').attr('disabled', 'disabled');
+
+            $('#s_phone').val($('#b_phone').val());
+            $('#s_phone').attr('disabled', 'disabled');
+        };
+
+        if(that.value == 0){
+            $('#s_first_name').val('');
+            $('#s_first_name').removeAttr('disabled');
+
+
+            $('#s_last_name').val('');
+            $('#s_last_name').removeAttr('disabled');
+
+            $('#s_company').val('');
+            $('#s_company').removeAttr('disabled');
+
+            $('#s_address').val('');
+            $('#s_address').removeAttr('disabled');
+
+            $('#s_address_2').val('');
+            $('#s_address_2').removeAttr('disabled');
+
+            $('#s_city').val('');
+            $('#s_city').removeAttr('disabled');
+
+            $('#s_state').val('');
+            $('#s_state').removeAttr('disabled');
+
+            $('#s_zip').val('');
+            $('#s_zip').removeAttr('disabled');
+
+            $('#s_country').val('United States');
+            $('#s_country').removeAttr('disabled');
+
+            $('#s_other_country').val('');
+            $('#s_other_country').removeAttr('disabled');
+
+            $('#s_phone').val('');
+            $('#s_phone').removeAttr('disabled');
+        }
+
+    }
+
+    function changebcountry(that){
+        if (that.value == 'United States') {
+            $('#b_state').removeAttr('disabled');
+            $('#b_other_country').attr('disabled','disabled');
+        } else {
+            $('#b_state').attr('disabled','disabled');
+            $('#b_other_country').removeAttr('disabled');
+        }
+    }
+
+    function changescountry(that){
+        if (that.value == 'United States') {
+            $('#s_state').removeAttr('disabled');
+            $('#s_other_country').attr('disabled','disabled');
+        } else {
+            $('#s_state').attr('disabled','disabled');
+            $('#s_other_country').removeAttr('disabled');
+        }
+    }
+
+    document.onkeypress = stopRKey; 
+</script>
+
+<?php $grand = 0; $total = 0; $discount ?>
+<div class="container-fluid">
+    <div class="col-12" style="width:970px; margin-top: 20px; margin-left: -30px">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background-color: #fcabcb; color: white">Your Shopping Cart</div>
+            <div class="panel-body">
+            <form enctype="application/x-www-form-urlencoded" role="form" class="form-horizontal" action="<?php echo $this->baseUrl();?>/shopping/list" method="post" >
+                <!-- <form action="<?php// echo $this->baseUrl();?>/orders/saveorder" method="post" id="frm"> -->
+                    <table class="table table-hover" border="0">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Product's Name</th>
+                                <th>Product's Id</th>
+                                <th>Price</th>
+                                <th><center>Quantity</center></th>
+                                <th><center>Sub-Total</center></th>
+                                <th><center>Action</center></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if (sizeof($this->cart)>0) {
+                                $counter = 0;
+                                foreach ($this->cart as $c) {
+                                    $grand += $c['price'] * $c['qty'];
+                                    echo "<tr>";
+                                    echo "<td><a href=".$this->baseUrl()."/products/prodetail/id/".$c['id']."><img src=" . $this->baseUrl() . "/products_img/". rawurlencode($c['picture']) ." width='50px' ></a></td>";
+                                    echo "<td style='vertical-align:middle'>" . $c['name'] . "</td>";
+                                    echo "<td style='vertical-align:middle'>" . $c['productid'] . "</td>";
+                                    echo "<td style='vertical-align:middle'>" . $this->currency($c['price']) . "</td>";
+                                    echo "<td width='70px' style='vertical-align:middle'><input size=1 name='qty[]' class='form-control' type='text' value =" . $c['qty'] . " onChange='updateCart(this,".$counter.")' ></td>";
+                                    echo "<td style='vertical-align:middle' align=center>" . $this->currency($c['price'] * $c['qty']) . "</td>";
+                                    echo "<td style='vertical-align:middle' align=center><button type='button' onClick='deleteItem(".$counter.")' class='btn btn-danger'>Delete</button></td>";
+                                    echo "<input type='hidden' class='".$counter."' name='pro_id[]' value=" . $c['productid'] . ">";
+                                    echo "<input type='hidden' name='pro_id_num[]' value=" . $c['local_id'] . ">";
+                                    echo "<input type='hidden' name='price[]' value=" . $c['price'] . ">";
+                                    echo "<input type='hidden' name='id[]' value=" . $c['id'] . ">";
+                                    echo "</tr>";
+                                    $counter++;
+                                }
+                                    $total = $grand - $this->discount - $this->combo_discount;
+                            }
+                            ?>
+                        </tbody>
+                        <tfoot style="padding-bottom: -10px">
+                            <tr>
+                                <td colspan="5" align="right"><h4>Subtotal:</h4></td>
+                                <td><h4><center><?php echo $this->currency($grand); ?></center></h4></td>
+                                <td colspan="4"></td>
+                            </tr>
+                            <?php if($this->discount > 0){ ?>
+                            <tr>
+                                <td colspan="5" align="right"><h4>Discount:</h4></td>
+                                <td><h4><center><?php echo $this->currency($this->discount); ?></center></h4></td>
+                                <td colspan="4"></td>
+                            </tr>
+                            <?php } ?>
+                            <input type="hidden" name="discount" value="<?php echo $this->discount; ?>" />
+                            <?php if($this->combo_discount > 0){ ?>
+                            <tr>
+                                <td colspan="5" align="right"><h4>Combos' Discount:</h4></td>
+                                <td><h4><center><?php echo $this->currency($this->combo_discount); ?></center></h4></td>
+                                <td colspan="4"></td>
+                            </tr>
+                            <?php } ?>
+                            <tr>
+                                <td colspan="5" align="right"><h4>Total:</h4></td>
+                                <td><h4><center><?php echo $this->currency($total); ?></center></h4></td>
+                                <td colspan="4"></td>
+                            </tr>
+                            <input type="hidden" name="combo_discount" value="<?php echo $this->combo_discount; ?>" />
+                    <!--         <tr>
+                                <td colspan="89"><center><input style="margin-top: 20px" type="submit" value="$<?php// if($total){//echo $total;} ?> Next Step" class="btn btn-danger btn-lg"></center></td>
+                             </tr> -->
+                        </tfoot>
+                    </table>
+                </div>
+                </div>
+                <?php echo $this->form; ?>
+            </form>
+            
+        
+    </div>
+</div>

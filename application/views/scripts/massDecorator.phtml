@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Save Mass-Mailing Form</div>
+  <div class="panel-body">
+        <form enctype="application/x-www-form-urlencoded" role="form" class="form-horizontal" action="<?php echo $this->element->getAction(); ?>" method="post" >
+            <table border="0" cellpadding="0" padding="0" width="100%">
+            <tr>
+                <td>Subject</td>
+                <td><?php echo $this->element->getElement('subject'); ?></td>
+            </tr>
+            <tr>
+                <td>Content</td>
+                <td><?php echo $this->element->getElement('description'); ?></td>
+            </tr>
+            <tr>
+                <td colspan="2"><?php echo $this->element->getElement('submit'); ?><?php echo $this->element->getElement('reset'); ?></td>
+            </tr>
+            </table>
+        </form>
+  </div>
+</div>

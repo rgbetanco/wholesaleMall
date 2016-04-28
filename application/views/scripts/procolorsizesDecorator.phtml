@@ -1,0 +1,49 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">Add New Color/Size Form</div>
+  <div class="panel-body">
+      <form enctype="application/x-www-form-urlencoded" role="form" id="addform" class="form-horizontal" action="<?php echo $this->element->getAction(); ?>" method="post" >
+            <table width="100%">
+            <tr>
+                <td size="5%">Color</td>
+                <td><?php echo $this->element->getElement('c_id'); ?></td>
+            </tr>
+            <tr>
+                <td>Size</td>
+                <td><?php echo $this->element->getElement('s_id'); ?></td>
+            </tr>
+            <tr>
+                <td>Sub-Id</td>
+                <td><?php echo $this->element->getElement('sub_id'); ?></td>
+            </tr>
+            <tr>
+                <td>Volusion-Id</td>
+                <td><?php echo $this->element->getElement('v_id'); ?></td>
+            </tr>
+            <tr>
+                <td>Retail Price</td>
+                <td><?php echo $this->element->getElement('r_price'); ?></td>
+            </tr>
+            <tr>
+                <td>Wholesale Price</td>
+                <td><?php echo $this->element->getElement('w_price'); ?></td>
+            </tr>
+            <tr>
+                <td>On Sale Price</td>
+                <td><?php echo $this->element->getElement('o_price'); ?></td>
+            </tr>
+            <tr>
+                <td>Inventory</td>
+                <td><?php echo $this->element->getElement('inventory'); ?></td>
+            </tr>
+            <tr>
+                <td colspan="2"><?php echo $this->element->getElement('csrf'); ?></td>
+            </tr>
+            <tr>
+                
+                <td colspan="2"><?php echo $this->element->getElement('Submit'); ?><?php echo $this->element->getElement('Reset'); ?></td>
+                
+            </tr>
+        </table>
+  </form>
+  </div>
+ </div>

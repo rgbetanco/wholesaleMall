@@ -1,0 +1,92 @@
+<div class="container-fluid">
+    <div class="col-md-12" style="width: 938px; margin-left: -14px; margin-top: 15px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+
+            <form id="frm_store" action="<?php echo $this->baseUrl()?>/stores/display" method="post">
+                <table cellspacing="1" cellpadding="1" border="0">
+                    <tr>
+                        <td>Authorized Distributors - </td>
+                        <td width='120px'>Search by country:</td>
+                        <td width='100px'>
+                            <select name="country" id="select_country" onchange="changeCountry()">
+                                <?php
+                                    foreach($this->countries as $c){
+                                        if($this->selected_country == $c['country']){
+                                            echo "<option value='".$c['country']."' selected>". $c['country']."</option>";
+                                        } else {
+                                            echo "<option value='".$c['country']."'>". $c['country']."</option>";
+                                        }
+                                    }
+                                ?>
+                            </select>
+                        </td>
+    
+                        <td><span id="city_label"></span></td>
+                        <td>
+                            <select name="city">
+                                <?php echo "<option value='All'>All</option>"; ?>
+                                <?php
+                                    foreach($this->cities as $y){
+                                        if($this->selected_city == $y['city']){
+                                            echo "<option value='".$y['city']."' selected>". $y['city']."</option>";
+                                        } else {
+                                            echo "<option value='".$y['city']."'>". $y['city']."</option>";
+                                        }
+                                    }
+                                ?>
+                            </select>
+                        </td>
+
+                        <td>
+                            <input type="submit" value="search" class="btn btn-info btn-sm" style="border-radius: 0px" />
+                        </td>
+
+                    </tr>
+                </table>
+                </form>
+
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Store's Name</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Website</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($this->stores as $s){?>
+                        <tr>
+                            <td><?php echo $s['name'] ?></td>
+                            <td><?php echo $s['address'] ?></td>
+                            <td><?php echo $s['city'] ?></td>
+                            <td><?php echo $s['website'] ?></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function changeCountry (){
+        $("#frm_store").submit();
+    }
+
+    function changeLable(){
+        if($("#select_country").val() == 'USA'){
+            $("#city_label").html('Search by State:');
+        } else{
+            $("#city_label").html('Search by City:');
+        }
+    }
+
+    $(document).ready(function(){
+        changeLable();
+    });
+</script>

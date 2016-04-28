@@ -1,0 +1,20 @@
+<?php
+
+$this->layout()->setLayout('second_layout');
+$this->form->setAction(Zend_Controller_Front::getInstance()->getBaseUrl().'/products/add');
+$this->ckeditor = 'ckeditor'; //To tell the layout ckeditor must be loaded . 
+echo $this->errorMessage;
+?>
+
+<script>
+  $(document).ready(function(){
+      $('#datepicker').datepicker({dateFormat: "mm/dd/yy", defaultDate: "+1m"} );
+  });
+</script>
+
+<div class="col-md-12">
+    <?php echo $this->form; ?>
+</div>
+
+<?php echo $this->setupEditor( 'description' );
+ echo $this->setupEditor( 'sec_description' );

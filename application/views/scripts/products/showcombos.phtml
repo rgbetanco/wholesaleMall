@@ -1,0 +1,23 @@
+<?php if($this->is_combo > 0){?>
+<div class="col-7" style="width: 450px; margin-left: -65px; margin-right: 0px; padding-right: 0px">
+        <div class="container-fluid">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #fcabcb; color: white">Discount of <span style="color:black; font-size: 18px"><?php echo $this->currency($this->discount); ?></span> if you buy together with</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <?php foreach($this->combo as $c){?>
+                        <div class="col-6">
+                            <div class="thumbnail">
+                                <a href="<?php echo $this->baseUrl()?>/products/prodetail/id/<?php echo $c['pro_id']?>"><img src="<?php echo $this->baseUrl()?>/products_thu/<?php echo $c['picture']?>" /></a>
+                                <div class="caption">
+                                    <strong><center><?php echo $c['name'];?></center></strong>
+                                </div>
+                            </div>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php }

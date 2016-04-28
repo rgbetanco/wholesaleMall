@@ -1,0 +1,56 @@
+<?php
+$this->layout()->setLayout('print_layout');
+$total = 0;
+?>
+    <div class="panel panel-default">
+        <div class="panel-heading">Order Detail</div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td width="40%"><strong>Product's Name</strong></td>
+                        <td><strong><center>Sub_id</center></strong></td>
+                        <td><strong><center>Unit Price</center></strong></td>
+                        <td><strong><center>Quantity</center></strong></td>
+                        <td><strong><center>Subtotal</center></strong></td>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach($this->data as $d){ ?>
+                <form action="#" method="post">
+                <tr>
+                    <td>
+                    <?php if ($d->deleted){ ?>
+                        <span style='color:red;text-decoration:line-through'>
+                            <span style='color:black'><?php echo $this->action('getproductname','products',null,array('pro_id'=>$d->pro_id));?>
+                            </span>
+                        </span>
+                    <?php } else { ?>
+                            <span style='color:black'><?php echo $this->action('getproductname','products',null,array('pro_id'=>$d->pro_id));?>
+                            </span>
+                    <?php } ?>
+                    
+
+                    </td>
+                    <td width="20%" align="center"><?php echo $d->sub_id; ?></td>  
+                    <td align="center"><?php echo $d->price; ?></td>
+                    <td align="center"><?php echo $d->quantity; ?></td>
+                    <?php if(!$d->deleted){ ?>
+                    <td align="center"><?php echo $this->currency($d->price*$d->quantity); $total += $d->price*$d->quantity; ?></td>
+                    <?php } else { ?>
+                        <td align="center"><?php echo "---" ?></td>
+                    <?php } ?>
+                </tr>
+                </form>
+                <?php } ?>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" align="right"><h3>Sub-Total:</h3></td>
+                        <td align="center"><h3><?php echo $this->currency($total); ?></h3></td>
+                        <td colspan="3"></td>
+                    </tr>
+                </tfoot>
+                </table>
+        </div>
+    </div>

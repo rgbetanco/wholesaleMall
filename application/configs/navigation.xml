@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF8'?>
+<config>
+	<nav>
+		<index>
+			<label>Home</label>
+			<controller>index</controller>
+			<action>index</action>
+			<resource>index</resource>
+		</index>
+		<login>
+			<label>Login</label>
+			<controller>authentication</controller>
+			<action>login</action>
+			<resource>login</resource>
+		</login>
+		<logout>
+			<label>Logout</label>
+			<controller>authentication</controller>
+			<action>logout</action>
+			<resource>logout</resource>
+		</logout>
+		<register>
+			<label>Register</label>
+			<controller>register</controller>
+			<action>register</action>
+			<resource>register</resource>
+                        <pages>
+                            <add>
+                                <label>List Customer</label>
+                                <controller>register</controller>
+                                <action>list</action>
+                                <resource>register</resource>
+                            </add>
+                        </pages>
+		</register>
+	</nav>
+</config>

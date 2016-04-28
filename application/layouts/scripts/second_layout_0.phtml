@@ -1,0 +1,48 @@
+<?php echo $this->doctype(); ?>
+<html>
+<head>
+<?php $this->headTitle()->append('Register');?>
+<?php echo $this->headTitle('Admin');?>
+<?php $this->headLink()->prependStylesheet($this->baseUrl().'/css/site.css'); ?>
+<?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/tablestyle.css'); ?>
+<?php echo $this->headLink()->prependStylesheet('//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css'); ?>
+<?php echo $this->headScript()->appendFile('//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js');?>
+<?php $this->jQuery()->addStylesheet('http://ajax.googleapis.com/ajax/libs/jqueryui/1.7/themes/smoothness/jquery-ui.css');?>
+
+<?php echo $this->jQuery();?>
+<?php 
+    if ( $this->ckeditor ) { 
+        echo $this->headScript()->appendFile( $this->baseUrl().'/js/ckeditor/ckeditor.js');
+    }
+?>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="header">Dogo Design</div>
+	<div id="content">
+            <div id="sidebar" style="height:100px; border: 0px solid black">
+                    <?php echo $this->navigation(); ?>
+                    <ul>
+                        <li><a href="<?php echo $this->baseUrl().'/register/list'; ?>" >Customers</a></li>
+                        <li><a href="<?php echo $this->baseUrl().'/products/index'; ?>" >Products</a></li>
+                    </ul>
+		</div>
+		<div id="slideshow">
+		<?php
+			if($this->banners){
+				foreach ($this->banners as $banner) {
+		 			echo "<img src=".$this->baseUrl().$banner['path']." />";
+		 		}
+		 	}
+	 	?>
+		</div>
+                <div id="main_content">
+			<?php echo $this->layout()->content; ?>
+		</div>
+	</div>
+        <div id="footer" style="border:0px solid black">footer</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <div class="panel-heading" style="background-color: #fcabcb; color: white">New Password Form</div>
+  <div class="panel-body">
+        <form enctype="application/x-www-form-urlencoded" role="form" class="form-horizontal" action="<?php echo $this->element->getAction(); ?>" method="post" >
+            <table style="clear:both;" border="0" cellpadding="2" padding="0" width="100%">
+                <tr>
+                    <td width="40%" valign="middle">New password (minimum of 4-15 character long)</td>
+                    <td valign="middle"><?php echo $this->element->getElement('pswd'); ?></td>
+                </tr>
+                <tr>
+                    <td width="100">Retype password</td>
+                    <td valign="middle"><?php echo $this->element->getElement('confirm_pswd'); ?></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><?php echo $this->element->getElement('Submit');?></td>
+                </tr>
+            </table>
+        </form>
+  </div>
+</div>

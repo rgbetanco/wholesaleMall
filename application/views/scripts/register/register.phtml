@@ -1,0 +1,29 @@
+<?php
+$this->form_reg->setAction(Zend_Controller_Front::getInstance()->getBaseUrl().'/register/register');
+?>
+<div class="row" style="margin: 0 auto; margin-top: 20px; border: 0px solid black; max-width: 945px; padding-left: 10px"> 
+    <p><strong>Distributor Signup</strong></p> 
+    <p>To receive wholesale information, catalog, 
+        and full access to our website please fill in all required fields.</p><p><strong>This is for retail distributor use only</strong>.  Further verification may be required. </p>
+        <p><center><span style="color:red;"><strong><?php echo $this->errorMessage; ?></strong><span></center></p>
+    <div class="col-md-12">
+        <?php echo $this->form_reg; ?>
+    </div>
+    <div class="col-12"> 
+        <p>*Required fields</p>
+        <p>Privacy Policy:</p>
+        <p>Your information is for internal and verification use only. It will not be distributed to third parties in anyways.</p>
+    </div>
+</div>
+
+<script type="text/javascript">
+function changecountry(that){
+    if(that.value != 'United States'){
+        $('#states').attr('disabled','disabled');
+        $('#other_country').removeAttr('disabled');
+    } else {
+        $('#other_country').attr('disabled','disabled');
+        $('#states').removeAttr('disabled');
+    }
+}
+</script>

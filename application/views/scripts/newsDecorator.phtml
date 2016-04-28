@@ -1,0 +1,32 @@
+<div class="panel panel-primary">
+        <div class="panel-heading">Add News Form</div>
+        <div class="panel-body">
+            <form enctype="multipart/form-data" role="form" class="form-horizontal" action="<?php echo $this->element->getAction(); ?>" method="post" >
+                <table width='100%'>
+                    <tr>
+                        <td>Title</td>
+                        <td><?php echo $this->element->getElement('title'); ?></td>
+                    </tr>
+                    <tr>
+                        <td>Content</td>
+                        <td><?php echo $this->element->getElement('description'); ?></td>
+                    </tr>
+                    <tr>
+                        <td>Active</td>
+                        <td><?php echo $this->element->getElement('active'); ?></td>
+                    </tr>
+                    <tr>
+                        <td>Sorting Order</td>
+                        <td><?php echo $this->element->getElement('order'); ?></td>
+                    </tr>
+                     <tr>
+                        <td>Banner</td>
+                        <td><?php echo $this->element->getElement('pic'); ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><?php echo $this->element->getElement('submit'); ?><?php echo $this->element->getElement('reset'); ?></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>

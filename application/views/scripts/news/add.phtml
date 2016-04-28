@@ -1,0 +1,9 @@
+<?php
+$this->layout()->setLayout('second_layout');
+$this->form->setAction($this->url(array('controller'=>'news','action'=>'add')));
+$this->ckeditor = 'ckeditor'; 
+?>
+
+<?php
+echo $this->form;
+echo $this->setupEditor( 'description' );

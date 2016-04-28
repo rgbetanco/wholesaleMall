@@ -1,0 +1,58 @@
+<?php $this->layout()->setLayout('second_layout');?>
+
+<script>
+$(document).ready(function(){
+    $('.picker').colpick({
+        layout: 'hex',
+        submit: 0,
+        colorScheme: 'dark',
+        onChange: function(hsb, hex, rgb, el, bySetColor) {
+            $(el).css('border-color', '#' + hex);
+            // Fill the text box just if the color was set using the picker, and not the colpickSetColor function.
+            if (!bySetColor)
+                $(el).val(hex);
+        }
+    }).keyup(function() {
+        $(this).colpickSetColor(this.value);
+    });
+});    
+ 
+</script>
+<div class="panel panel-primary">
+<div class="panel-heading">List of Colors</div>
+<div class="panel-body">
+<form action="<?php echo $this->baseUrl(); ?>/colors/update" method="post" onsubmit="return confirm('Are you sure you want to submit this form?');" >
+    <table width='100%'>
+        <thead>
+            <tr>
+                <th><center><a href="<?php echo $this->baseUrl()?>/colors/display/tab/colorform/pagec/<?php if(!$this->pagec){echo 1;}else{echo $this->pagec;} ?>/sortc/name">Color</a></center></th>
+                <th><center><a href="<?php echo $this->baseUrl()?>/colors/display/tab/colorform/pagec/<?php if(!$this->pagec){echo 1;}else{echo $this->pagec;} ?>/sortc/code">Code</a></center></th>
+                <th><center><a href="<?php echo $this->baseUrl()?>/colors/display/tab/colorform/pagec/<?php if(!$this->pagec){echo 1;}else{echo $this->pagec;} ?>/sortc/rgb">RGB</a></center></th>
+                <th><center><a href="<?php echo $this->baseUrl()?>/colors/display/tab/colorform/pagec/<?php if(!$this->pagec){echo 1;}else{echo $this->pagec;} ?>/sortc/sort">Sort</a></center></th>
+                <th><center>Delete</center></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="13"><center><?php echo $this->paginationControl($this->data, 'Elastic', 'pageControlColors.phtml'); ?></center></td>
+            </tr>
+        </tfoot>
+<?php foreach ($this->data as $color) { ?>
+        <input type="hidden" name="id[]" value="<?php echo $color->id?>" />
+<tr>
+    <td align="center"><input type="text" class="form-control" name="name[]" value="<?php echo $color->name ?>" /></td>
+    <td align="center"><input type="text" class="form-control" name="code[]" value="<?php echo $color->code ?>" /></td>
+    <td align="center"><input type="text" class="form-control picker" placeholder="Click me" name="rgb[]" value="<?php echo $color->rgb ?>" /></td>
+    <td align="center"><input type="text" class="form-control" name="sort[]" value="<?php echo $color->sort ?>" /></td>
+    <td align="center"><input type="checkbox" name="delete[]" value="<?php echo $color->id ?>" /></td>
+</tr>
+<?php } ?>
+<tr>
+    <td colspan="5"><input type="submit" class="btn btn-primary" value="Submit" /></td>
+</tr>
+</table>
+    <input type="hidden" name="pagec" value="<?php echo $this->pagec; ?>" />
+    <input type="hidden" name="tab" value="colorform" />
+</form>
+</div>
+</div>

@@ -1,0 +1,47 @@
+<?php
+$this->layout()->setLayout('second_layout');
+?>
+
+<div class="col-md-12">
+<div class="panel panel-primary">
+    <div class="panel-heading">Mass Mailing List</div>
+    <div class="panel-body">
+        <form action="<?php echo $this->baseUrl()?>/mass/delete" method="post" onsubmit="return confirm('Are you sure you want to submit this form?')">
+            <table class="table table-hover" border='0'>
+                <thead>
+                    <td width='30%'><strong>Subject</strong></td>
+                    <td width='40%'><strong>Content</strong></td>
+                    <td><center><strong>Delete</strong></center></td>
+                    <td><center><strong>Edit</strong></center></td>
+                    <td><center><strong>Details</strong></center></td>
+                    <td><center><strong>Send</strong></center></td>
+                    <td><center><strong>Download</strong></center></td>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td><input type="submit" value="Submit" class="btn btn-primary" style="width: 90px" /></td>
+                        <td align="right" colspan="7"><a href="<?php echo $this->url(array('controller'=>'mass','action'=>'add'))?>" class="btn btn-warning">Add New Mail</a></td>
+                    </tr>
+                    <tr>
+                        <td colspan="8"><center><?php echo $this->paginationControl($this->data, 'Elastic', 'pageControlCombos.phtml'); ?></center></td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <?php foreach($this->data as $d) { ?>
+                    <tr>
+                        <input type="hidden" value="<?php echo $d->id?>" name="id[]" />
+                        <td><?php echo $d->subject; ?></td>
+                        <td><?php echo $d->content; ?></td>
+                        <td align="center"><input type='checkbox' name="delete[]" value="<?php echo $d->id; ?>" /></td>
+                        <td align="center"><a href="<?php echo $this->baseUrl()?>/mass/edit/id/<?php echo $d->id?>" class="btn btn-primary glyphicon glyphicon-edit" ></a></td>
+                        <td align="center"><a href="<?php echo $this->baseUrl()?>/massdetail/add/mass_id/<?php echo $d->id?>" class="btn btn-primary glyphicon glyphicon-expand"></a></td>
+                        <td align="center"><a href="<?php echo $this->baseUrl()?>/mass/send/mass_id/<?php echo $d->id?>" class="btn btn-primary glyphicon glyphicon-send"></a></td>
+                        <td align="center"><a href="<?php echo $this->baseUrl()?>/mass/download/mass_id/<?php echo $d->id?>" class="btn btn-primary glyphicon glyphicon-download" ></a></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+</div>

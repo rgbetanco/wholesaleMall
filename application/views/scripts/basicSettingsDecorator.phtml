@@ -1,0 +1,40 @@
+ <div class="panel panel-primary">
+        <div class="panel-heading">Basic Settings Form</div>
+        <div class="panel-body">
+            <form enctype="application/x-www-form-urlencoded" role="form" class="form-horizontal" action="<?php echo $this->element->getAction(); ?>" method="post" >
+                <table>
+                    <tr>
+                        <td colspan="2"><strong>Dogo $ Settings</strong></td>
+                    </tr>
+                    <tr>
+                        <td>dogo$ Expiration days</td>
+                        <td><?php echo $this->element->getElement('expire'); ?></td>
+                    </tr>
+                    <tr>
+                        <td>Minimum order (dollars)</td>
+                        <td><?php echo $this->element->getElement('min_amount'); ?></td>
+                    </tr>
+                    <tr>
+                        <td>% of purchase</td>
+                        <td><?php echo $this->element->getElement('percentage'); ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>Misc. Settings</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Minimum order (items)</td>
+                        <td><?php echo $this->element->getElement('min_items'); ?></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Drop Ship Surcharge (US$)</td>
+                        <td><?php echo $this->element->getElement('drop_ship'); ?></td>
+                    </tr>
+                    
+                    <tr>
+                        <td colspan="2"><?php echo $this->element->getElement('submit'); ?><?php echo $this->element->getElement('reset'); ?></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+</div>

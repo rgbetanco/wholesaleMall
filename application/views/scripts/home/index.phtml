@@ -1,0 +1,73 @@
+<?php
+$this->layout()->setLayout('second_layout');
+$this->form1->setAction($this->url(array('controller'=>'home','action'=>'update', 'slidings'=>true, 'id'=>1)),null, false);
+$this->form2->setAction($this->url(array('controller'=>'home','action'=>'update', 'slidings'=>true, 'id'=>2)),null, false);
+$this->form3->setAction($this->url(array('controller'=>'home','action'=>'update', 'slidings'=>true, 'id'=>3)),null, false);
+$this->form4->setAction($this->url(array('controller'=>'home','action'=>'update', 'slidings'=>true, 'id'=>4)),null, false);
+
+$this->form5->setAction($this->url(array('controller'=>'home','action'=>'update', 'id'=>5)),null, false);
+$this->form6->setAction($this->url(array('controller'=>'home','action'=>'update', 'id'=>6)),null, false);
+$this->form7->setAction($this->url(array('controller'=>'home','action'=>'update', 'id'=>7)),null, false);
+?>
+
+<div class="panel panel-primary">
+<div class="panel-heading">Sliding images on home page</div>
+<div class="panel-body">
+<!-- first slide -->
+<div class="col-md-2">
+    <img src="<?php echo $this->baseUrl()?>/img/banners/<?php echo $this->pic1;?>" style="max-width: 140px" />
+</div>
+<div class="col-md-10">
+    <?php echo $this->form1; ?>
+</div>
+<!-- second slide -->
+<div class="col-md-2">
+    <img src="<?php echo $this->baseUrl()?>/img/banners/<?php echo $this->pic2;?>" style="max-width: 140px" />
+</div>
+<div class="col-md-10">
+    <?php echo $this->form2; ?>
+</div>
+<!-- third slide -->
+<div class="col-md-2">
+    <img src="<?php echo $this->baseUrl()?>/img/banners/<?php echo $this->pic3;?>" style="max-width: 140px" />
+</div>
+<div class="col-md-10">
+    <?php echo $this->form3; ?>
+</div>
+<!-- fourth slide -->
+<div class="col-md-2">
+    <img src="<?php echo $this->baseUrl()?>/img/banners/<?php echo $this->pic4;?>" style="max-width: 140px" />
+</div>
+<div class="col-md-10">
+    <?php echo $this->form4; ?>
+</div>
+</div>
+</div>
+
+
+<div class="panel panel-primary">
+<div class="panel-heading">Images at the bottom of home page</div>
+<div class="panel-body">
+<!-- first banner  -->
+<div class="col-md-2">
+    <img src="<?php echo $this->baseUrl()?>/img/banners/<?php echo $this->pic5;?>" style="max-width: 140px" />
+</div>
+<div class="col-md-10">
+    <?php echo $this->form5; ?>
+</div>
+<!-- second banner -->
+<div class="col-md-2">
+    <img src="<?php echo $this->baseUrl()?>/img/banners/<?php echo $this->pic6;?>" style="max-width: 140px" />
+</div>
+<div class="col-md-10">
+    <?php echo $this->form6; ?>
+</div>
+<!-- third banner -->
+<div class="col-md-2">
+    <img src="<?php echo $this->baseUrl()?>/img/banners/<?php echo $this->pic7;?>" style="max-width: 140px" />
+</div>
+<div class="col-md-10">
+    <?php echo $this->form7; ?>
+</div>
+</div>
+</div>

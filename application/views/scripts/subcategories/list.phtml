@@ -1,0 +1,5 @@
+<?php
+//Using this in the navigation menu
+foreach ($this->subcategories as $sub){
+    echo "<li><a href=".$this->baseUrl()."/products/prosearch/search/".urlencode($sub->name)." style='font-weight: bold;'>".$sub->name."</a></li>";
+}

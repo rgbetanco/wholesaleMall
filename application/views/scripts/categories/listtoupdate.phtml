@@ -1,0 +1,26 @@
+<div class="panel panel-primary">
+<div class="panel-heading">List of Categories</div>
+<div class="panel-body">
+<form action="<?php echo $this->baseUrl(); ?>/categories/delete" method="post" onsubmit="return confirm('Are you sure you want to submit this form?');" >
+    <table width='100%'>
+        <thead>
+            <tr>
+                <th><center>Description</center></th>
+                <th><center>Sort</center></th>
+                <th><center>Delete</center></th>
+            </tr>
+        </thead>
+<?php foreach ($this->categories as $cat) { ?>
+        <input type="hidden" name="id[]" value="<?php echo $cat->id?>" />
+<tr>
+    <td align="center"><input type="text" class="form-control" size="15" name="name[]" value="<?php echo $cat->name ?>" /></td>
+    <td align="center"><input type="text" class="form-control" size="1" name="sort[]" value="<?php echo $cat->sort ?>" /></td>
+    <td align="center"><input type="checkbox" name="delete[]" value="<?php echo $cat->id ?>" /></td>
+</tr>
+<?php } ?>
+</table>
+    <br>
+    <input type="submit" class="btn btn-primary" value="Submit" />
+</form>
+</div>
+</div>

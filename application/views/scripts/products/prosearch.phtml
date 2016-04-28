@@ -1,0 +1,52 @@
+
+    <div class="row col-12" style="width: 940px; margin-left: 15px">
+        <div style="background-color:white; position:relative; float: right; <?php if (count($this->data) == 1) { echo 'height: 45px;'; } ?>" >
+            <?php if (count($this->data) > 1) { ?>
+                <?php echo $this->paginationControl($this->data, 'Elastic', 'pageControlFront.phtml'); ?>
+            <?php } else {echo "&nbsp";} ?>
+        </div>
+    </div>
+
+<div class="col-12" style="width: 950px; margin:-15px 0 0 -5px; padding: 0 0 0 0; border: 0px solid black">
+    <?php foreach ($this->data as $d) { ?>
+        <div class="col-3" style="margin: 0 0 -10px 0; padding:0 5px 0 5px; height: 340px">
+            <div class="thumbnail" style="border-radius: 0px; height: 320px">
+            <a href="<?php echo $this->baseUrl() ?>/products/prodetail/id/<?php echo $d->id ?>" class="thumbnailx" >
+                <img src="<?php echo $this->baseUrl(); ?>/products_img/<?php echo $d->picture; ?>" alt="...">
+            </a>
+                <div class="caption" style="height:90px;">
+                    <?php if ($d->new == 1) { ?>
+                        <img src="<?php echo $this->baseUrl() ?>/img/new.gif" />
+                    <?php } ?>
+                    <?php if ($d->on_sale == 1) { ?>
+                        <img src="<?php echo $this->baseUrl() ?>/img/sale.gif" />
+                    <?php } ?>
+                    <br>
+                    <center><strong><span style="font-size: 10px"><?php echo $d->name; ?></span></strong></center>
+                    
+                    <?php if (Zend_Auth::getInstance()->hasIdentity()) { ?>
+                        <?php if ($d->on_sale == 1) { ?>
+                            <center><strong>Price:<span style="color:red; text-decoration: line-through"><?php echo $this->currency($d->w_price);?></span> - Sale:</strong><strong><span style="color:red"><?php echo $this->currency($d->o_price);?></span></strong></center>
+                        <?php } else { ?>
+                            <center><strong>Price:<span style="color:black"><?php echo $this->currency($d->w_price)?></span></strong></center>
+                        <?php } ?>
+                    <?php } else {
+                        if ($d->dogopet_url != "") { ?>
+                            <center><button onclick="window.location.href='<?php echo $d->dogopet_url; ?>';" class="btn btn-sm btn-default" style="background-color:#fcabcb">Shop at dogopet.com</button></center>
+                        
+                    <?php }} ?>
+                    
+                </div>
+            </div>
+        </div>
+    <?php } ?>       
+</div>
+
+
+    <div class="col-12" style="width: 955px; margin-left: 0px; margin-top: 0px; border: 0px solid black; padding: 0">
+        <div style="margin: -10px 15px 0 0px; background-color:white; position:relative; float: right; <?php if (count($this->data) == 1) { echo 'height: 25px;'; } ?>">
+            <?php if (count($this->data) > 1) { ?>
+                <?php echo $this->paginationControl($this->data, 'Elastic', 'pageControlFront.phtml'); ?>
+            <?php } else {echo "&nbsp";} ?>
+        </div>
+    </div>

@@ -1,0 +1,39 @@
+<?php
+$this->layout()->setLayout('second_layout');
+$this->form->setAction($this->url(array('controller'=>'massdetail','action'=>'add','mass_id'=>$this->id)));
+?>
+<div class="col-md-6">
+    <?php echo $this->form; ?>
+</div>
+<div class="col-md-6">
+<div class="panel panel-default">
+    <div class="panel-heading">Products Added</div>
+    <div class='panel-body'>
+        <form action="<?php echo $this->baseUrl()?>/massdetail/delete" method="post">
+            <input type="hidden" name="id" value="<?php echo $this->id; ?>" />
+        <table class="table table-hover" >
+            <thead>
+                <tr>
+                    <td><strong>Product Description</strong></td>
+                    <td><center><strong>Delete</strong></center></td>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="2"><input type='submit' value="submit" class="form-control" style="width:70px" /> 
+                </tr>
+            </tfoot>
+            <tbody>
+                <?php if($this->data) {?>
+                <?php foreach($this->data as $d) {?>
+                <tr>
+                    <td><?php echo $this->action('getproductname','products',null,array('pro_id'=>$d->pro_id));?></td>
+                    <td align='center'><input type="checkbox" name="delete[]" value="<?php echo $d->id; ?>" /></td>
+                </tr>
+                <?php } } ?>
+            </tbody>
+        </table>
+        </form>
+    </div>
+</div>
+</div>

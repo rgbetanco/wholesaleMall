@@ -1,0 +1,54 @@
+<?php 
+$this->layout()->setLayout('second_layout');
+?>
+<table cellpadding="10"
+    <tr>
+        <td><a href="<?php echo $this->url(array('controller'=>'discounts', 'action'=>'list','search'=>'active')); ?>" class="btn btn-primary">Active</a></td>
+        <td><a href="<?php echo $this->url(array('controller'=>'discounts', 'action'=>'list', 'search'=>'disabled'));?>" class="btn btn-primary">Disabled</a></td>
+        <td><a href="<?php echo $this->url(array('controller'=>'discounts', 'action'=>'list', 'search'=>'expired'));?>" class="btn btn-primary">Expired</a></td>
+        <td><a href="<?php echo $this->baseUrl();?>/discounts/list" class="btn btn-primary">All</a></td>
+    </tr>
+</table>
+<br>
+<div class="panel panel-primary">
+    <div class="panel-heading">Discounts</div>
+    <div class="panel-body">
+<form action="<?php echo $this->baseUrl();?>/discounts/edit" method="post">
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th><a href="<?php echo $this->url(array('controller'=>'discounts','action'=>'list','sort'=>'code')) ?>">Code</a></th>
+            <th><a href="<?php echo $this->url(array('controller'=>'discounts','action'=>'list','sort'=>'description')) ?>">Description</a></th>
+            <th><center>Status</center></th>
+            <th><center><a href="<?php echo $this->url(array('controller'=>'discounts','action'=>'list','sort'=>'end_date')) ?>">Expires</a></center></th>
+            <th><center>Delete</center></th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr><td colspan="4"><input class="btn btn-primary" type="submit" value="Submit"/></td><td colspan="4" align="right"><a href="<?php echo $this->url(array('controller'=>'discounts','action'=>'form'));?>" class="btn btn-warning">Add New Discount</a></td></tr>
+        <tr><td colspan="12"><center><?php echo $this->paginationControl($this->discounts, 'Elastic', 'pagecontrol.phtml'); ?></center></td></tr>
+    </tfoot>
+    <tbody>
+        <?php foreach($this->discounts as $d) { ?>
+        <tr>
+            <td><?php echo $d->code; ?></td>
+            <td><?php echo $d->description; ?></td>
+            <td width="200">
+                <select name="status[]" class="form-control" size="1">
+                    <option value="0" <?php if($d->status == 0){echo 'selected=selected';} ?>>Active</option>
+                    <option value="1" <?php if($d->status == 1){echo 'selected=selected';} ?>>Expired</option>
+                    <option value="2" <?php if($d->status == 2){echo 'selected=selected';} ?>>Disabled</option>
+                </select>
+            </td>
+            <td align="center"><?php echo $d->end_date ?></td>
+            <td align="center"><input type="checkbox" name="delete[]" value="<?php echo $d->id ?>" /></td>
+            <input type="hidden" name="id[]" value="<?php echo $d->id ?>" />
+            <td><a href="<?php echo $this->url(array('controller'=>'discounts','action'=>'update','id'=>$d->id)); ?>">Edit</a></td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
+</form>
+    </div>
+</div>

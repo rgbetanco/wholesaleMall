@@ -1,0 +1,60 @@
+<?php
+$this->layout()->setLayout('second_layout');
+?>
+<div class="container col-md-6">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Import & Export</div>
+        <div class="panel-body">
+            <form action="<?php echo $this->url(array('controller'=>'stores', 'action'=>'upload'));?>" method="post" class="form-inline" enctype="multipart/form-data">
+                <input type="file" class="form-control" name="uploadfile" />
+                <input type="submit" class="btn btn-default" value="upload">
+            </form>
+            <br>
+            <a class="btn btn-primary" href="<?php echo $this->url(array('controller'=>'stores','action'=>'export')); ?>">Download CSV File</a> 
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <a href="<?php echo $this->url(array('controller'=>'stores','action'=>'add'));?>" class="btn btn-warning">Add New Store</a>
+</div>
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">List of Stores</div>
+        <div class="panel-body">
+            <form action="<?php echo $this->baseUrl()?>/stores/index" method="post" >
+                <table class="table table-hover" border="0">
+                    <thead>
+                        <tr>
+                            <th>Store's Name</th>
+                            <th>Address</th>
+                            <th>Country</th>
+                            <th><center>Edit</center></th>
+                            <th><center>Delete</center></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2"><input type="submit" class="btn btn-primary" style="width: 70px" value="Submit" /></td>
+                            <td colspan="3" align='right'><a href="<?php echo $this->url(array('controller'=>'stores','action'=>'add'));?>" class="btn btn-warning">Add New Store</a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="99"><center><?php echo $this->paginationControl($this->stores, 'Elastic', 'pagecontrol.phtml'); ?></td>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <?php foreach($this->stores as $d) { ?>
+                        <tr>
+                            <input type='hidden' name="id[]" value="<?php echo $d->id;?>" />
+                            <td><?php echo $d->name;?></td>
+                            <td><?php echo $d->address;?></td>
+                            <td><?php echo $d->country;?></td>
+                            <td align='center'><a href="<?php echo $this->url(array('controller'=>'stores', 'action'=>'edit', 'id'=>$d->id));?>">Edit</a></td>
+                            <td align='center'><input type="checkbox" name="delete[]" value="<?php echo $d->id; ?>" /></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

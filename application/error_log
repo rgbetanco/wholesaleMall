@@ -1,0 +1,1 @@
+[14-Sep-2015 08:37:20 America/Denver] PHP Fatal error:  Class 'Zend_Application_Bootstrap_Bootstrap' not found in /home1/nicafutb/public_html/nicaraodev/dogo/application/Bootstrap.php on line 4

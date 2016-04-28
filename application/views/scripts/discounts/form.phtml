@@ -1,0 +1,25 @@
+<?php $this->layout()->setLayout('second_layout');
+$this->form->setAction($this->baseUrl().'/discounts/form');
+    
+?>
+
+<script>
+    $(document).ready(function(){        
+       $('#init_date').datepicker({dateFormat:'yy-mm-dd'}); 
+       $('#end_date').datepicker({dateFormat:'yy-mm-dd'}); 
+       
+       getProducts(1);
+       
+    });
+    
+    function getProducts(subcat_id){
+        $pro_id = $('#pro_id');
+        
+        $url = "<?php echo $this->baseUrl();?>/products/getproducts";
+//        console.log($url);
+        $.ajax({url:$url,data:{'subcat_id':subcat_id},success:function(data){$pro_id.html(''); $pro_id.append(data);}});  
+    }
+</script>
+
+<?php
+echo $this->form;

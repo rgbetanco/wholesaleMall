@@ -1,0 +1,25 @@
+<style>
+    .custom-sm {
+        width: 150px;
+    }
+</style>
+<div class="panel panel-default">
+  <div class="panel-heading" style="background-color: #fcabcb; color:white">Login Form</div>
+  <div class="panel-body">
+        <form enctype="application/x-www-form-urlencoded" role="form" class="form-horizontal" action="<?php echo $this->element->getAction(); ?>" method="post" >
+            <table style="clear:both;" border="0" cellpadding="0" padding="0" width="100%">
+                <tr>
+                    <td  style="padding-top: 0px" width="100">E-mail:</td>
+                    <td><?php echo $this->element->getElement('username'); ?></td>
+                </tr>
+                <tr>
+                    <td style="padding-top: 0px" >Password</td>
+                    <td><?php echo $this->element->getElement('password'); ?></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><?php echo $this->element->getElement('Login');?></td>
+                </tr>
+            </table>
+        </form>
+  </div>
+</div>

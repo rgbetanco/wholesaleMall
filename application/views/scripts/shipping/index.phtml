@@ -1,0 +1,7 @@
+<?php
+    echo $this->errorMessage;
+    $this->form->setAction(Zend_Controller_Front::getInstance()->getBaseUrl().'/shipping/index/reg_id/'.$this->id);
+?>
+<div class="col-md-12">
+    <?php echo $this->form; ?>
+</div>

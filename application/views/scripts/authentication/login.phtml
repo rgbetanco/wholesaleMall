@@ -1,0 +1,29 @@
+<?php
+echo $this->errorMessage;
+?>
+<div class="row" style="width: 940px; margin-left:-15px; margin-top: 25px">
+    <div class="col-12">
+        <p><strong>To access your account, please enter your e-mail address and password below.</strong></p>
+    </div>
+    <div class="col-6">
+        <p><strong>Returning Customers</strong></p>
+        <p>If you've purchased from us before, please login with your email address and password.</p>
+        <p>If you just registered, please note that our staff first need to verify your data and activate your account before you can sign in. Thank you for your understanding.
+        <?php echo $this->form; ?>
+    </div>
+    
+    <div class="well col-6" style="margin-top: 75px; background-color:white">
+        <p><strong>New Customers</strong></p>
+        <p>If this is your first purchase with us, please proceed by clicking the following button to continue first-time registration.</p>
+        <a href="<?php echo $this->baseUrl()?>/register/register" class="btn btn-primary">Continue</a>
+    </div>
+    <div class="well col-8" style="margin-left:15px; background-color:white">
+        <p><strong>Forgot your password?</strong></p>
+        <form method="post" action="<?php echo $this->baseUrl() ?>/authentication/forgotpswd">
+            <label>Please, enter your email</label>
+            <input type="text" name="forgot_email" class="form-control input-sm" />
+            <br>
+            <input type="submit" name="forgotpswd" class="btn btn-primary">
+        </form>
+    </div>
+</div>

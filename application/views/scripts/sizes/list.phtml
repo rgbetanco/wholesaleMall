@@ -1,0 +1,35 @@
+<?php $this->layout()->setLayout('second_layout'); ?>
+<div class="panel panel-primary">
+<div class="panel-heading">List of Sizes</div>
+<div class="panel-body">
+<form action="<?php echo $this->baseUrl(); ?>/sizes/update" method="post" onsubmit="return confirm('Are you sure you want to submit this form?');" >
+    <table width='100%'>
+        <thead>
+            <tr>
+                <th><center><a href="<?php echo $this->baseUrl()?>/colors/display/tab/sizeform/pagez/<?php if(!$this->pagez){echo 1;}else{echo $this->pagez;} ?>/sortz/name">Size</a></center></th>
+                <th><center><a href="<?php echo $this->baseUrl()?>/colors/display/tab/sizeform/pagez/<?php if(!$this->pagez){echo 1;}else{echo $this->pagez;} ?>/sortz/sort">Sort</a></center></th>
+                <th><center>Delete</center></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="13"><center><?php echo $this->paginationControl($this->data, 'Elastic', 'pageControlSizes.phtml'); ?></center></td>
+            </tr>
+        </tfoot>
+<?php foreach ($this->data as $size) { ?>
+        <input type="hidden" name="id[]" value="<?php echo $size->id?>" />
+<tr>
+    <td align="center"><input type="text" class="form-control" size="15" name="name[]" value="<?php echo $size->name ?>" /></td>
+    <td align="center"><input type="text" class="form-control" size="1" name="sort[]" value="<?php echo $size->sort ?>" /></td>
+    <td align="center"><input type="checkbox" name="delete[]" value="<?php echo $size->id ?>" /></td>
+</tr>
+<?php } ?>
+<tr>
+    <td colspan="3"><input type="submit" class="btn btn-primary" value="Submit" /></td>
+</tr>
+</table>
+    <input type="hidden" name="pagez" value="<?php echo $this->pagez?>" />
+    <input type="hidden" name="tab" value="sizeform" />
+</form>
+</div>
+</div>

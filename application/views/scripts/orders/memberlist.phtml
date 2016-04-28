@@ -1,0 +1,37 @@
+<?php
+echo '<br>'; 
+if ($this->ddollars > 1) {?>
+<div class="alert alert-success" role="alert" style="border-radius: 0px"><?php echo "<strong>Well done! </strong>You have ".$this->currency($this->ddollars)." available dogo dollars" ?></div>
+<?php } ?>
+<div class="alert alert-warning" role="alert" style="border-radius: 0px"><strong>Click <a href="<?php echo $this->baseUrl()?>/authentication/changepswd" style="font-size:11px"><span style="font-size: 14px"> here </span></a>to change your password</strong></div>
+<?php
+
+foreach($this->orders as $o){
+	echo '<strong>Order Number:</strong> '.$o->order_number."&nbsp;&nbsp;&nbsp;&nbsp;";
+	switch ($o->status) {
+	    case 0:
+	    	echo "<strong>New Order, no yet confirmed</strong><br>";
+	        break;
+	    case 1:
+	    	echo "<strong>Order confirmed</strong><br>";
+	        break;
+	    case 2:
+	   	 	echo "<strong>Order already shipped</strong><br>";
+	        break;
+	    case 3:
+	    	echo "<strong>Order Cancelled</strong><br>";
+	        break;
+	}
+	if($o->tracking_numbers){
+		echo '<strong>Tranking Numbers:</strong> '.$o->tracking_numbers."<br>";
+	}
+	
+	if($o->discount > 0){
+		echo '<strong>Given Discount:</strong>'.$this->currency($o->discount)."&nbsp;&nbsp;&nbsp;&nbsp;";
+	}
+	if($o->discount_cmb > 0){
+		echo '<strong>Discount given on Combos:</strong> '.$this->currency($o->discount_cmb)."<br>";
+	}
+
+    echo $this->action('memberlistdetail','orders',null, array('id'=>$o->id));
+} ?>	

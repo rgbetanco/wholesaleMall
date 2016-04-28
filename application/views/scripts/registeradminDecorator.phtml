@@ -1,0 +1,72 @@
+<style>
+    .labeltd {
+        padding-top: 0px;
+    }
+</style>
+<div class="panel panel-primary">
+  <div class="panel-heading">Register Form</div>
+  <div class="panel-body">
+        <form enctype="application/x-www-form-urlencoded" role="form" class="form-horizontal" action="<?php echo $this->element->getAction(); ?>" method="post" >
+            <table border="0" cellpadding="2" align="center">
+            <tr>
+                <td class="labeltd">Company's Name<span style="color:red">*</span></td>
+                <td colspan="3"><?php echo $this->element->getElement('company'); ?></td>
+                <!-- second column -->
+                <td class="labeltd">Email<span style="color:red">*</span></td>
+                <td><?php echo $this->element->getElement('email'); ?></td>
+            </tr>
+            <tr>
+                <td class="labeltd">Company Type<span style="color:red">*</span></td>
+                <td colspan="3"><?php echo $this->element->getElement('company_type'); ?></td>
+                <!-- second column -->
+                <td class="labeltd">Phone<span style="color:red">*</span></td>
+                <td><?php echo $this->element->getElement('phone'); ?></td>
+            </tr>
+            <tr>
+                <td class="labeltd">First Name<span style="color:red">*</span></td>
+                <td colspan="3"><?php echo $this->element->getElement('first_name'); ?></td>
+                <!-- second Column -->
+                <td class="labeltd">Fax</td>
+                <td><?php echo $this->element->getElement('fax'); ?></td>
+            </tr>
+            <tr>
+                <td class="labeltd">Last Name<span style="color:red">*</span></td>
+                <td colspan="3"><?php echo $this->element->getElement('last_name'); ?></td>
+                <!-- second column-->
+                <td class="labeltd">Website</td>
+                <td><?php echo $this->element->getElement('website'); ?></td>
+            </tr>
+            <tr>
+                <td class="labeltd">Title</td>
+                <td colspan="3"><?php echo $this->element->getElement('title'); ?></td>
+                <!-- second column -->
+                <td class="labeltd">Tax Id<span style="color:red">*</span></td>
+                <td valign="top"><?php echo $this->element->getElement('tax_id'); ?></td>
+            </tr>
+            <tr>
+                <td class="labeltd">Billing Address<span style="color:red">*</span></td>
+                <td colspan="3"><?php echo $this->element->getElement('address'); ?></td>
+                <!-- second column -->
+                <td colspan="2" class="labeltd">Would you like to receive our promotions?<?php echo $this->element->getElement('spam'); ?></td>
+            </tr>
+            <tr>
+                <td class="labeltd">City<span style="color:red">*</span></td>
+                <td><?php echo $this->element->getElement('city'); ?></td>
+                <!-- second column -->
+                <td class="labeltd">State<span style="color:red">*</span></td>
+                <td><?php echo $this->element->getElement('state'); ?></td>
+            </tr>
+            <tr>
+                <td class="labeltd">Zip Code<span style="color:red">*</span></td>
+                <td colspan="1"><?php echo $this->element->getElement('zip'); ?></td>
+                <!-- second column -->
+                <td class="labeltd">Country<span style="color:red">*</span></td>
+                <td><?php echo $this->element->getElement('country'); ?></td>
+            </tr>
+            <tr>
+                <td colspan="6" align="left"><?php echo $this->element->getElement('Send'); ?><?php echo $this->element->getElement('Reset'); ?></td>
+            </tr>
+        </table>
+  </form>
+  </div>
+ </div>

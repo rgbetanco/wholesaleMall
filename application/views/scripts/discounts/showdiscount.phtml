@@ -1,0 +1,5 @@
+<?php if($this->count){ ?>
+    <div class="alert alert-warning" role="alert">
+        <span style="font-size: 18px"><strong><center><?php echo $this->description." - "; echo $this->currency($this->discount)." Off with orders exceeding ".$this->currency($this->min)." of this product";?></center></strong></span>
+    </div>
+<?php }

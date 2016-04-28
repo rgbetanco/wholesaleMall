@@ -1,0 +1,29 @@
+<?php
+$this->layout()->setLayout('second_layout');
+?>
+
+<div class="tabbable" > <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs" id="myTab">
+        <li><a href="#baru" data-toggle="tab">Baru</a></li>
+        <li><a href="#posted" data-toggle="tab">Posted</a></li>
+        <li class="active"><a href="#draft" data-toggle="tab">Draft</a></li>
+    </ul>
+    <br/>
+    <div class="tab-content">
+
+        <!--new-->
+        <div class="tab-pane" id="baru">
+            baru
+        </div>
+
+        <!--new-->
+        <div class="tab-pane" id="posted">
+            posted
+        </div>
+
+        <!--new-->
+        <div class="tab-pane active" id="draft">
+            draft
+        </div>
+    </div>
+</div>

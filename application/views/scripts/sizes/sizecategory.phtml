@@ -1,0 +1,62 @@
+<?php 
+$this->layout()->setLayout('second_layout');
+?>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">Size Chart Categories</div>
+	<div class="panel-body">
+
+	<form action="<?php echo $this->baseUrl() ?>/sizes/addcategory" method="post" data-toggle="validator" role="form" style="margin-left: 50px">
+		<div class="form-group">
+			<label for="inputName" class="control-label">Category's description</label>
+			<input type="text" name="name" class="form-control" placeholder="New Category" style="width:250px" required />
+		</div>
+		<div class="form-group">
+			<input type="submit" value="Add" class="btn btn-primary">	
+			<input type="reset" value="Reset" class="btn btn-danger">	
+		</div>
+	</form>
+
+	<br>
+</div>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">Size Chart Categories</div>
+	<div class="panel-body">
+
+	<form action="<?php echo $this->baseUrl() ?>/sizes/sizecategory" method="post" onsubmit="return confirm('Are you sure you want to submit this form?');">
+	<table width="100%" cellpadding="2px" style="margin-top: 0%;" border="1">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Display Length?</th>
+				<th>Display Neck?</th>
+				<th>Display Girth?</th>
+				<th>Display Width?</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			<?php foreach ($this->data as $k => $d): ?>
+				<tr>
+					<td><?php echo $d->name; ?></td>
+					<td align="center"><input type="checkbox" name="length[]" value="<?php echo $d->id; ?>" <?php if($d->length){echo 'checked';} ?> /></td>
+					<td align="center"><input type="checkbox" name="neck[]" value="<?php echo $d->id; ?>"  <?php if($d->neck){echo 'checked';} ?> /></td>
+					<td align="center"><input type="checkbox" name="girth[]" value="<?php echo $d->id; ?>"  <?php if($d->girth){echo 'checked';} ?> /></td>
+					<td align="center"><input type="checkbox" name="width[]" value="<?php echo $d->id; ?>"  <?php if($d->width){echo 'checked';} ?> /></td>
+					<td align="center"><input type="checkbox" name="delete[]" value="<?php echo $d->id; ?>" /></td>
+				</tr>
+					<input type="hidden" name="id[]" value="<?php echo $d->id; ?>" />
+			<?php endforeach ?>
+
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="99"><input type="submit" value="Submit" class="btn btn-primary"></td>
+			</tr>
+		</tfoot>
+	</table>
+	</form>
+</div>
+</div>

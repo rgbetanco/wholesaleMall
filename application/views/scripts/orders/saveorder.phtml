@@ -1,0 +1,29 @@
+<script>
+    function updateShippingAddress(that){
+        $.post('<?php echo $this->baseUrl();?>/orders/getshippingaddress',{id:that.value}, 
+                    function(response){
+                        //alert(response['address']);
+                        $('#s_first_name').val(response['first_name']);
+                        $('#s_last_name').val(response['last_name']);
+                        $('#s_address').val(response['address']);
+                        $('#s_city').val(response['city']);
+                        $('#s_state').val(response['state']);
+                        $('#s_zip').val(response['zip']);
+                        $('#s_country').val(response['country']);
+                        $('#s_phone').val(response['phone']);
+                    });
+    }
+</script>
+<div class="col-12">
+<div class="container-fluid" style="margin-top: 20px; width: 970px; margin-left: -30px">
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            Success Message
+        </div>
+        <div class="panel-body">
+            <center><strong>This is the final step before placing your order. Thank you for your purchase. Please fill up the following form</strong></center>
+        </div>
+    </div>
+    <?php echo $this->form; ?>
+    </div>
+</div>

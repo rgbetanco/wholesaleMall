@@ -1,0 +1,14 @@
+<?php
+$this->form->setAction(Zend_Controller_Front::getInstance()->getBaseUrl() . '/procolorsizes/addform/id/' . $this->id);
+echo $this->errorMessage;
+?>
+<script>
+    
+    function changeWp(){
+       var x = $("#addform :input[name = 'r_price']").val();
+       $("#addform :input[name = 'w_price']").val(x);
+       $("#addform :input[name = 'o_price']").val(x);
+    }
+</script>
+
+    <?php echo $this->form; ?>

@@ -1,0 +1,39 @@
+<br /><br /><center>View script for controller <b>Books</b> and script/action name <b>list</b></center>
+<?php
+$this->layout()->setLayout('second_layout');
+?>
+<table border="1" style="background:#ccc">
+	<tr>
+		<th>id</th>
+		<th>title</th>
+		<th>author</th>
+	</tr>
+	<tr>
+<div>
+	<?php
+		foreach ($this->hello as $hi){
+			echo "<td>".$hi->id."</td>";
+			echo "<td>".$hi->title."</td>";
+			echo "<td>".$hi->author."</td>";
+		}
+	?>
+</div>
+	</tr>
+</table>
+
+<table border="1">
+	<tr>
+		<th>id</th>
+		<th>title</th>
+		<th>author</th>
+	</tr>
+	<tr>
+<?php
+foreach ($this->books as $books){
+	echo "<td>".$books->id."</td>";
+	echo "<td>".$books->title."</td>";
+	echo "<td>".$books->author."</td>";
+}
+?>
+	</tr>
+</table>

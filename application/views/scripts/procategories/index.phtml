@@ -1,0 +1,51 @@
+<?php
+$this->layout()->setLayout('second_layout');
+?>
+
+<div class="panel panel-primary">
+<div class="panel-heading">List of Sub-Categories</div>
+<div class="panel-body">
+<form action=<?php echo $this->baseUrl() . "/procategories/delete"; ?> method="post" onsubmit="return confirm('Are you sure you want to submit this form?');">
+    <table width="100%">
+        <?php
+        if (sizeof($this->data) > 0) {
+            ?>
+            <thead>
+                <tr>
+                    <th><center>Id</center></th>
+                    <th><center>Sub-Category</center></th>
+                    <th><center>Delete</center></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="3"><center><?php echo $this->paginationControl($this->data, 'Elastic', 'pagecontrol.phtml'); ?></center></td>
+            </tr>
+            </tfoot>
+            <tbody>
+            <?php } ?>
+            <?php
+            if (sizeof($this->data) > 0) {
+                foreach ($this->data as $subcategory) {
+                    ?>
+                    <tr>
+                        <td align="center"><?php echo $subcategory->pro_id ?><input type="hidden" name="pro_id[]" value="<?php echo $subcategory->pro_id ?>" /></td>
+                        <td align="center"><?php echo $subcategory->name; ?><input type="hidden" name="sub_name[]" value="<?php echo $subcategory->name ?>" /></td>
+                        <td align="center"><?php echo $this->formCheckbox('delete[]', $subcategory->subcat_id, array('checked' => FALSE)); ?></td>
+
+                    </tr>
+                    <?php
+                }
+            } else {
+                echo "No record found on the current database";
+            }
+            ?>
+            <tr>
+                <td colspan="3"><?php echo $this->formSubmit('submit', 'Submit', array('class' => 'btn btn-primary')) ?></td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="hidden" name="page" value="<?php echo $this->page ?>" />
+</form>
+</div>
+</div>

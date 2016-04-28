@@ -1,0 +1,41 @@
+<!-- add here dogo dollars available -->
+<?php $subtotal = 0; ?>
+<div class="container-fluid">
+    <div class="col-12" style="width: 970px; margin-top: 10px; margin-left: -30px">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background-color: #fcabcb; color:white">Order's detail</div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th><center>Product's Name</center></th>
+                            <th><center>Product's Price</center></th>
+                            <th><center>Quantity</center></th>
+                            <th><center>Subtotal</center></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($this->data as $d) { ?>
+                        <tr>
+                            <td align='center'><?php echo $d['product_name'] ?></td>
+                            <td align='center'><?php echo $this->currency($d['price']) ?></td>
+                            <td align='center'><?php echo $d['quantity'] ?></td>
+                            <td align='center'><?php echo $this->currency($d['quantity']*$d['price']) ?></td>
+                            <?php $subtotal += $d['quantity']*$d['price']; ?>
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" align="right"><strong>Total</strong></td>
+                            <td align="center"><?php echo $this->currency($subtotal)?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="100" align='center'><?php echo $this->paginationControl($this->data, 'Elastic', 'pageControlFront.phtml'); ?></td>
+                        </tr>
+                    </tfoot>
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>

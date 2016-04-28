@@ -1,0 +1,12 @@
+<?php $this->layout()->setLayout('second_layout');
+
+if (!$this->tab) {
+    $default = "class='active'";
+    $active = "active";
+} else {
+    $default = "";
+    $active = "";
+}
+?>
+
+    <?php echo $this->action('index', 'orders', null, array('id'=>$this->id)); ?>

@@ -1,0 +1,47 @@
+<?php
+    $this->layout()->setLayout('second_layout');    
+?>
+
+<script>
+  $(document).ready(function(){
+      $('.datepicker').datepicker({dateFormat: "yy-mm-dd", defaultDate: "+3m"} );
+  });
+</script>
+<div class="panel panel-primary">
+<div class="panel-heading">List of Dogo Dollars Earned</div>
+<div class="panel-body">
+<form action="<?php echo $this->baseUrl();?>/ddollars/update/reg_id/<?php echo $this->reg_id; ?>" method="post" onsubmit="return confirm('Are you sure you want to submit this form?');">
+<table>
+    <thead>
+        <tr>
+            <th>Order #</th>
+            <th>Amount Earned</th>
+            <th>Expiration Date</th>
+            <th><center>Delete</center></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="5"><input type="submit" value="Submit" class="btn btn-primary"></td>
+        </tr>
+        <tr>
+            <td colspan="5"><center><?php echo $this->paginationControl($this->data, 'Elastic', 'pageControlDogo.phtml'); ?></center></td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <?php foreach($this->data as $dollar){ ?>
+        <tr>
+            <input type="hidden" name="id[]" value="<?php echo $dollar->id; ?>" />
+            <td><input name="order[]" type="text" class="form-control" value="<?php echo $dollar->order; ?>"></td>
+            <td><input name="amount[]" type="text" class="form-control" value="<?php echo $dollar->amount; ?>"></td>
+            <td width="20%"><input name="expires[]" type="text" class="datepicker form-control" value="<?php echo $dollar->expires; ?>"></td>
+            <td align="center"><input name="delete[]" type="checkbox" value="<?php echo $dollar->id; ?>"></td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
+    <input type="hidden" name="paged" value="<?php echo $this->paged; ?>" />
+    <input type="hidden" name="tab" value="dd" />
+</form>
+</div>
+</div>
